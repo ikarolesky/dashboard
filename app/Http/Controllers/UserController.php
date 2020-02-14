@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Permission;
-use App\Authorizable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +53,7 @@ public function store(Request $request)
 public function edit($id)
 {
     $user = User::find($id);
-    $roles = Role::pluck('name', 'id');
+    $roles = Role::whereNotIn('name',['Super Admin'])->pluck('name', 'id');
     $permissions = Permission::all('name', 'id');
 
     return view('user.edit', compact('user', 'roles', 'permissions'));

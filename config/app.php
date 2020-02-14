@@ -52,8 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
-    'url_base' => env('APP_URL_BASE', 'http://localhost'),
+    'url' => env('APP_URL', 'http://kings7.site'),
+    'url_base' => env('APP_URL_BASE', 'http://kings7.site'),
     'asset_url' => env('ASSET_URL', null),
 
     /*

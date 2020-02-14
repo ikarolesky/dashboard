@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('title', 'Roles & Permissions')
 
 @section('content')
-
+@role('Super Admin')
+<div class="app-main__outer">
+    <div class="app-main__inner">
     <!-- Modal -->
     <div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
         <div class="modal-dialog" role="document">
@@ -39,28 +41,20 @@
         <div class="col-md-5">
             <h3>Roles</h3>
         </div>
-        <div class="col-md-7 page-action text-right">
-            @can('add_roles')
-                <a href="#" class="btn btn-sm btn-success pull-right" data-toggle="modal" data-target="#roleModal"> <i class="glyphicon glyphicon-plus"></i> New</a>
-            @endcan
-        </div>
+
     </div>
 
 
     @forelse ($roles as $role)
         {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update',  $role->id ], 'class' => 'm-b']) !!}
 
-        @if($role->name === 'admin')
-            @include('shared._permissions', [
-                          'title' => $role->name .' Permissions',
-                          'options' => ['disabled'] ])
+        @if($role->name === 'Super Admin')
+
         @else
             @include('shared._permissions', [
-                          'title' => $role->name .' Permissions',
+                          'title' => $role->name ,
                           'model' => $role ])
-            @can('edit_roles')
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            @endcan
+            
         @endif
 
         {!! Form::close() !!}
@@ -68,4 +62,9 @@
     @empty
         <p>No Roles defined, please run <code>php artisan db:seed</code> to seed some dummy data.</p>
     @endforelse
+    @else
+    <div class="app-main__outer">
+    <div class="app-main__inner">
+    <h3><div class="row"><div class="col-md-7 page-action text-right">Nada para ver aqui!</h3></div></div></div></div>
+    @endrole
 @endsection

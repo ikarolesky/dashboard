@@ -24,7 +24,7 @@ return [
         /**
          * Whether the integration with Apache2 is currently active.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /**
          * Define the ports of your Apache service.
@@ -91,7 +91,7 @@ return [
                  *
                  * @info set to null to disable reloading.
                  */
-                'reload' => 'apache2ctl graceful'
+                'reload' => null
             ]
         ]
     ],

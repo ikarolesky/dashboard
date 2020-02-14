@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+@if (\Session::has('message'))
+
+    <div class="alert alert-success" align="center" row="8">
+        <ul>
+            <li>{!! \Session::get('message') !!}</li>
+        </ul>
+    </div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

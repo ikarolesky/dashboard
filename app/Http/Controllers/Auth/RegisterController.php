@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Tenant;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Artisan;
+use App\Console\Commands\CreateTenant;
 use App\User;
+use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -21,14 +26,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, HasRoles;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -63,10 +68,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+   $subdomain = $data['subdomain'];
+   $name = $data['name'];
+   $email = $data['email'];
+   $password = $data['password'];
+   $phone = $data['phone'];
+   $doc = $data['doc'];
+   $zip = $data['address_zip'];
+   $address = $data['address'];
+   $number = $data['address_number'];
+   $comp = $data['address_comp'];
+   $district = $data['address_district'];
+   $city = $data['address_city'];
+   $state = $data['address_state'];
+   $company = $data['company'];
+   $tenant = $tenant = Tenant::registerTenant($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $subdomain, $company);
+
+   $this->redirectTo = 'http://' . $tenant->hostname->fqdn . '/login';
+
+   return $tenant;
     }
+
+
 }
+
+

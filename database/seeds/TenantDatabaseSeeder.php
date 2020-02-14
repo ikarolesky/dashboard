@@ -66,5 +66,10 @@ class TenantDatabaseSeeder extends Seeder
 
         // add a default user role
         Role::create(['name' => 'user']);
+
+        Role::create(['name' => 'suporte']);
+
+        Role::create(['name'=> 'trafego']);
+        Role::create(['name'=> 'Super Admin']);
     }
 }

@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role','phone','doc','address_zip','address','address_number','address_comp','address_district','address_city','address_state','address_state','address_country', 'company', 'active',
     ];
 
     /**
@@ -38,6 +38,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'active' => 'boolean'
     ];
 
     /**
@@ -60,6 +61,7 @@ public function isAdmin()
 {
    return $this->roles()->where('users', 1)->first();
 }
+
 }
 
 

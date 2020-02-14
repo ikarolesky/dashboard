@@ -1,15 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
-@section('title', 'Edit User ' . $user->first_name)
+@section('title', 'Edit User ' . $user->name)
 
 @section('content')
+<div class="app-main__outer">
 
+    <div class="app-main__inner">
     <div class="row">
         <div class="col-md-5">
-            <h3>Edit {{ $user->first_name }}</h3>
+            <h3>Editar usuário: {{ $user->name }}</h3>
         </div>
         <div class="col-md-7 page-action text-right">
-            <a href="{{ route('users.index') }}" class="btn btn-default btn-sm"> <i class="fa fa-arrow-left"></i> Back</a>
+            <a href="{{ route('users.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-warning"> <i class="metismenu-icon pe-7s-back" style="font-size: 25px"> Voltar</a></i>
         </div>
     </div>
 
@@ -21,7 +23,7 @@
                         {!! Form::model($user, ['method' => 'PUT', 'route' => ['users.update',  $user->id ] ]) !!}
                             @include('user._form')
                             <!-- Submit Form Button -->
-                            {!! Form::submit('Save Changes', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Save Changes', ['class' => 'mb-2 mr-2 btn-transition btn btn-outline-primary']) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>

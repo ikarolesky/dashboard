@@ -7,8 +7,8 @@ use Illuminate\Console\Command;
 
 class DeleteTenant extends Command
 {
-    protected $signature = 'tenant:delete {name}';
-    protected $description = 'Deletes a tenant of the provided name. Only available on the local environment e.g. php artisan tenant:delete boise';
+    protected $signature = 'tenant:delete {subdomain}';
+    protected $description = 'Deletes a tenant of the provided subdomain. Only available on the local environment e.g. php artisan tenant:delete boise';
 
     public function handle()
     {
@@ -20,8 +20,8 @@ class DeleteTenant extends Command
             return;
         }
 
-        $name = $this->argument('name');
-        $result = Tenant::delete($name);
+        $subdomain = $this->argument('subdomain');
+        $result = Tenant::delete($subdomain);
         $this->info($result);
     }
 }
