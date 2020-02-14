@@ -21,7 +21,7 @@
             </thead>
             <tbody>
             @foreach($data as $object)
-                <tr>
+                <tr>@if (isset($object->company))
                     <td style="font-size: 18px">{{ $object->id }}</td>
                     <td style="font-size: 18px">{{ $object->name }}</td>
                     <td style="font-size: 18px">{{ $object->email }}</td>
@@ -36,7 +36,7 @@
                     <td style="font-size: 18px">{{ $object->address_country }}</td>
                     <td style="font-size: 18px">{{ $object->doc }}</td>
                     <td style="font-size: 18px">{{ $object->address_zip }}</td>
-    </tr>
+                @endif</tr>
             @endforeach
             </tbody>
         </table>

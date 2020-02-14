@@ -17,6 +17,7 @@
 </div>
 
 @can('edit_user')
+@if ($user->roles('id') == '1')
 <!-- Roles Form Input -->
 <div class="form-group @if ($errors->has('roles')) has-error @endif">
     {!! Form::label('roles[]', 'Roles') !!}
@@ -73,7 +74,7 @@
 </div>
 
 
-
+@endif
 
 
 
