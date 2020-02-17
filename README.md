@@ -2,7 +2,7 @@ Kings7 Multi - tenancy Dashboard
 
 How to -
 
-git clone https://github.com/fbrambila/kingsdash.git
+git clone https://github.com/ikarolesky/kings7.git
 
 composer install
 
