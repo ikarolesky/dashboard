@@ -16,6 +16,15 @@
         </ul>
     </div>
 @endif
+
+ @if (\Session::has('danger'))
+
+    <div class="alert alert-danger" align="center" row="8">
+        <ul>
+            <li>{!! \Session::get('danger') !!}</li>
+        </ul>
+    </div>
+@endif
     <div class="row">
 
         <div class="col-md-12" >
@@ -24,7 +33,7 @@
 <p></p>
 <div class="col-md-12" style="text-align: center">
             @can('add_users')
-                <a href="{{ route('create') }}" class="mb-2 mr-2 btn btn-warning"> <i class="metismenu-icon pe-7s-plus" style="font-size: 25px"> Create</a></i>
+                <a href="{{ route('create') }}" class="mb-2 mr-2 btn btn-warning"> <i class="metismenu-icon pe-7s-plus"> Novo Usuário</a></i>
             @endcan
         </div>
     </div>
@@ -35,12 +44,13 @@
             <thead>
             <tr>
                 <th style="font-size: 18px">Id</th>
-                <th style="font-size: 18px">Name</th>
+                <th style="font-size: 18px">Nome</th>
                 <th style="font-size: 18px">Email</th>
-                <th style="font-size: 18px">Role</th>
-                <th style="font-size: 18px">Created At</th>
+                <th style="font-size: 18px">Função</th>
+                <th style="font-size: 18px">Criado em</th>
+                <th style="font-size: 18px">Ativo</th>
                 @can('edit_users', 'delete_users')
-                <th class="text-center" style="font-size: 18px">Actions</th>
+                <th class="text-center" style="font-size: 18px">Ações</th>
                 @endcan
             </tr>
             </thead>
@@ -52,7 +62,11 @@
                     <td style="font-size: 18px">{{ $item->email }}</td>
                     <td style="font-size: 18px">{{ $item->roles->implode('name', ', ') }}</td>
                     <td style="font-size: 18px">{{ $item->created_at->toFormattedDateString() }}</td>
-
+                    @if ($item->active == 1)
+                    <td style="font-size: 18px">Sim</td>
+                    @elseif ($item->active == 0)
+                    <td style="font-size: 18px">Não</td>
+                    @endif
                     @can('edit_users')
                     <td class="text-center">
                         @include('shared._actions', [

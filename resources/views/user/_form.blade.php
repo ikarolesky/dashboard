@@ -17,10 +17,59 @@
 </div>
 
 @can('edit_user')
-@if ($user->roles == '1')
 
+@if ($user->roles->contains(function ($value, $key) {
+    return $value->name == "Super Admin";
+}))
 
+<!-- Telefone Form Input -->
+<div class="form-group">
+    {!! Form::label('phone', 'Telefone') !!}
+    {!! Form::text('phone', null, ['class' => 'form-control cel-sp-mask', 'placeholder' => 'Telefone']) !!}
+</div>
 
+<!-- Endereço Form Input -->
+<div class="form-row align-items-center form-group">
+    <div class="col-sm-7 my-1">
+    {!! Form::label('address', 'Endereço') !!}
+    {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Rua São Pedro']) !!}
+
+</div>
+<div class="col-sm-1 my-1">
+<!-- Número Form Input -->
+    {!! Form::label('address_number', 'Nº') !!}
+    {!! Form::text('address_number', null, ['class' => 'form-control', 'placeholder' => '71']) !!}
+</div>
+<div class="col-sm-2 my-1">
+<!-- Complemento Form Input -->
+    {!! Form::label('address_comp', 'Complemento') !!}
+    {!! Form::text('address_comp', null, ['class' => 'form-control', 'placeholder' => 'Casa 3']) !!}
+</div>
+<div class="col-sm-2 my-1">
+<!-- Bairro Form Input -->
+    {!! Form::label('address_district', 'Bairro') !!}
+    {!! Form::text('address_district', null, ['class' => 'form-control', 'placeholder' => 'Zona 7']) !!}
+</div>
+</div>
+
+<!-- CEP Form Input -->
+<div class="form-group">
+    {!! Form::label('address_zip', 'CEP') !!}
+    {!! Form::text('address_zip', null, ['class' => 'form-control cep-mask', 'placeholder' => '87030-210']) !!}
+</div>
+
+<!-- Cidade Form Input -->
+<div class="form-group @if ($errors->has('address_zip')) has-error @endif">
+    {!! Form::label('address_city', 'Cidade') !!}
+    {!! Form::text('address_city', null, ['class' => 'form-control', 'placeholder' => 'Maringá']) !!}
+</div>
+
+<!-- Estado Form Input -->
+<div class="form-group @if ($errors->has('address_zip')) has-error @endif">
+    {!! Form::label('address_state', 'Estado') !!}
+    {!! Form::text('address_state', null, ['class' => 'form-control', 'placeholder' => 'Paraná']) !!}
+</div>
+@else
 <!-- Roles Form Input -->
 <div class="form-group @if ($errors->has('roles')) has-error @endif">
     {!! Form::label('roles[]', 'Roles') !!}
@@ -75,7 +124,6 @@
     {!! Form::label('address_state', 'Estado') !!}
     {!! Form::text('address_state', null, ['class' => 'form-control', 'placeholder' => 'Paraná']) !!}
 </div>
-
 
 @endif
 

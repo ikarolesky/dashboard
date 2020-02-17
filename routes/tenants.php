@@ -11,9 +11,10 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/', function () {
     return view('welcome'); //Rota pagina inicial
 });
+    Route::put('users.status/{user}' , 'UserController@status')->name('users.status');
+    Route::put('users.status2/{user}' , 'UserController@status2')->name('users.status2');
     Auth::routes(['register' => false]);//Rotas de login e logout sem /register
     Route::resource('users', 'UserController');//Rotas para usuarios
-    Route::resource('roles', 'RoleController');//Rotas para roles
     Route::resource('posts', 'PostController');//Rotas para posts
     Route::get('tenant/add', 'CreateUserForTenantController@index')->name('create');//Rotas para criação de usuário /Get
     Route::post('tenant/add', 'CreateUserForTenantController@create')->name('user.add');//Rota para criação de usuário /Post

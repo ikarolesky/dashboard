@@ -66,23 +66,6 @@
                             </a>
                             </li>
                             </ul>
-                                                    <li>
-                                                    <a href="#">
-                                                    <i class="metismenu-icon pe-7s-check" style="font-size: 35px">
-                                                    </i>
-                                                                        Permissões
-                                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left">
-                                                    </i>
-                                                    </a>
-                                                    <ul>
-                                                    <li>
-                                                    <a href="{{ route('roles.index')}}">
-                                                    <i class="fas fa-edit">
-                                                    </i>
-                                                                         Editar Permissões
-                                                    </a>
-                                                    </li>
-                                                    </ul>
 
                     <li class="app-sidebar__heading"><span style="font-size: 16px"> Misc</li></span>
                     <li>

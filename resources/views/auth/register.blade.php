@@ -59,12 +59,20 @@
 
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="address_zip" class="col-md-4 col-form-label text-md-right">CEP</label>
+
+                            <div class="col-md-6">
+                                <input id="address_zip" class="form-control cep-mask" type="text" name="address_zip" value="{{ old('address_zip') }}" required autocomplete="address_zip" autofocus placeholder="12345-000" size="10" maxlenght="9">
+
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">Rua/Avenida</label>
 
                             <div class="col-md-6">
-                                <input id="address" class="form-control" type="text" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus placeholder="Rua Maringá">
+                                <input id="address" class="form-control" type="text" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus placeholder="Rua Maringá" size="60">
 
                             </div>
                         </div>
@@ -73,7 +81,7 @@
                             <label for="address_number" class="col-md-4 col-form-label text-md-right">Número</label>
 
                             <div class="col-md-6">
-                                <input id="address_number" class="form-control" type="text" name="address_number" value="{{ old('address_number') }}" required autocomplete="address_number" autofocus placeholder="9999">
+                                <input id="address_number" class="form-control" type="text" name="address_number" value="{{ old('address_number') }}" required autocomplete="address_number" autofocus placeholder="9999" size="6">
 
                             </div>
                         </div>
@@ -91,25 +99,18 @@
                             <label for="address_district" class="col-md-4 col-form-label text-md-right">Bairro</label>
 
                             <div class="col-md-6">
-                                <input id="address_district" class="form-control" type="text" name="address_district" value="{{ old('address_district') }}" required autocomplete="address_district" autofocus placeholder="Zona 7">
+                                <input id="address_district" class="form-control" type="text" name="address_district" value="{{ old('address_district') }}" required autocomplete="address_district" autofocus placeholder="Zona 7" size="40">
 
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="address_zip" class="col-md-4 col-form-label text-md-right">CEP</label>
 
-                            <div class="col-md-6">
-                                <input id="address_zip" class="form-control cep-mask" type="text" name="address_zip" value="{{ old('address_zip') }}" required autocomplete="address_zip" autofocus placeholder="12345-000">
-
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label for="address_city" class="col-md-4 col-form-label text-md-right">Cidade</label>
 
                             <div class="col-md-6">
-                                <input id="address_city" class="form-control" type="text" name="address_city" value="{{ old('address_city') }}" required autocomplete="address_city" autofocus placeholder="Maringá">
+                                <input id="address_city" class="form-control" type="text" name="address_city" value="{{ old('address_city') }}" required autocomplete="address_city" autofocus placeholder="Maringá" size="40">
 
                             </div>
                         </div>
@@ -118,7 +119,7 @@
                             <label for="address_state" class="col-md-4 col-form-label text-md-right">Estado</label>
 
                             <div class="col-md-6">
-                                <input id="address_state" class="form-control" type="text" name="address_state" value="{{ old('address_state') }}" required autocomplete="address_state" autofocus placeholder="Paraná">
+                                <input id="address_state" class="form-control" type="text" name="address_state" value="{{ old('address_state') }}" required autocomplete="address_state" autofocus placeholder="PR" size="2">
 
                             </div>
                         </div>
@@ -136,7 +137,7 @@
                     <p></p>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Senha</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -150,7 +151,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirmar senha</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -160,7 +161,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Registrar
                                 </button>
                             </div>
                         </div>

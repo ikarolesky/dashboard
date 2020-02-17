@@ -9,7 +9,6 @@
     <div class="row">
         <div class="col-md-5">
             <h3>Editar usuário: {{ $user->name}}</h3>
-            {{$roles->id}} if that have id = 1 then show form
         </div>
         <div class="col-md-7 page-action text-right">
             <a href="{{ route('users.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-warning"> <i class="metismenu-icon pe-7s-back" style="font-size: 25px"> Voltar</a></i>
@@ -25,7 +24,7 @@
                         {!! Form::model($user, ['method' => 'PUT', 'route' => ['users.update',  $user->id ] ]) !!}
                             @include('user._form')
                             <!-- Submit Form Button -->
-                            {!! Form::submit('Save Changes', ['class' => 'mb-2 mr-2 btn-transition btn btn-outline-primary']) !!}
+                            {!! Form::submit('Salvar', ['class' => 'mb-2 mr-2 btn-transition btn btn-outline-primary']) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>

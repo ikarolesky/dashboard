@@ -64,7 +64,7 @@ public function update(Request $request, $id)
     $this->validate($request, [
         'name' => 'bail|required|min:2',
         'email' => 'required|email|unique:users,email,' . $id,
-        'roles' => 'required|min:1'
+        'roles' => 'required|min:1',
     ]);
 
     // Get the user
@@ -123,4 +123,31 @@ private function syncPermissions(Request $request, $user)
     $user->syncRoles($roles);
     return $user;
 }
+
+public function status(Request $request, $id)
+{
+    // Get the user
+    $user = User::findOrFail($id);
+
+    // Update user
+    $user->fill($request->toArray());
+
+
+    $user->save();
+    return redirect()->route('users.index')->with('success', 'Usuário ativado!');
+}
+
+public function status2(Request $request, $id)
+{
+    // Get the user
+    $user = User::findOrFail($id);
+
+    // Update user
+    $user->fill($request->toArray());
+
+
+    $user->save();
+    return redirect()->route('users.index')->with('danger', 'Usuário desativado!');
+}
+
 }

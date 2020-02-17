@@ -71,6 +71,12 @@
                                                         {{ Auth::user()->name }}
                                         </a>
                                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            
+                                            <h6 tabindex="-1" class="dropdown-header">Perfil</h6>
+                                            <a class="dropdown-item" href="{{ route('users.index') .('/') . Auth::user()->id }}/edit">
+                                                        Editar
+                                            </a>
+                                            <h6 tabindex="-1" class="dropdown-header">_________________</h6>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -78,11 +84,7 @@
                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
-                                            </form>
-                                            <h6 tabindex="-1" class="dropdown-header">Management</h6>
-                                            <a class="dropdown-item" href="{{ route('users.index') .('/') . Auth::user()->id }}/edit">
-                                                        Editar
-                                            </a>
+                                            </form>                                            
                                            </div>
                                     </div>
                                     @endif

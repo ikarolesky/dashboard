@@ -9,7 +9,8 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ Route::resource('users', 'UserController');//Rotas para usuarios
+*/
+    Route::resource('users', 'UserController');//Rotas para usuarios
     Route::resource('roles', 'RoleController');//Rotas para roles
     Route::resource('posts', 'PostController');//Rotas para posts
     Route::get('tenant/add', 'CreateUserForTenantController@index')->name('create');//Rotas para criação de usuário /Get
