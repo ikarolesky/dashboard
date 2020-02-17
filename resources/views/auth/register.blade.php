@@ -1,14 +1,37 @@
 @extends('layouts.app2')
 
 @section('content')
-<div class="app-main__outer">
+< <div class="app-main__outer">
+                    <div class="app-main__inner">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div>Registro
+                                        <div class="page-title-subheading">Preencha todos os campos abaixo para se registrar
+                                            @can('add_users')
+                                             <a href="{{ route('create') }}" class="mb-2 mr-2 btn btn-warning"> <i class="metismenu-icon pe-7s-plus"> Novo Usuário</a></i>
+                                              @endcan
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+<!--                         <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+                            <li class="nav-item">
+                                <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
+                                    <span>Layout</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
+                                    <span>Grid</span>
+                                </a>
+                            </li>
+                        </ul> -->
 
-    <div class="app-main__inner">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                        <div class="main-card mb-3 card">
+
+
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -46,7 +69,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">Telefone</label>
 
                             <div class="col-md-6">
-                                <input id="phone" class="form-control cel-sp-mask" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus placeholder="(99)99999-9999">
+                                <input id="phone" class="form-control cel-sp-mask" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="off" autofocus placeholder="(99)99999-9999" maxlength="11">
 
                             </div>
                         </div>

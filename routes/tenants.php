@@ -11,6 +11,7 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/', function () {
     return view('welcome'); //Rota pagina inicial
 });
+    Route::resource('produtos', 'ProductsController');
     Route::put('users.status/{user}' , 'UserController@status')->name('users.status');
     Route::put('users.status2/{user}' , 'UserController@status2')->name('users.status2');
     Auth::routes(['register' => false]);//Rotas de login e logout sem /register
@@ -39,6 +40,7 @@ Route::middleware(['web', 'auth'])
     ->as('tenant.account.')
     ->prefix('account')
     ->group(function () {
+
 
         // access route names as tenant.account.profile.* e.g. tenant.account.profile.edit
         // access route path as account/profile/* e.g. account/profile/edit

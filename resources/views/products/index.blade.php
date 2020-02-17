@@ -7,11 +7,8 @@
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
-                                    <div>{{ $result->total() }} {{ Str::plural('Usuário', $result->count()) . " " . Str::plural('Encontrado', $result->count())}}
+                                    <div>{{ $result->total() }} {{ Str::plural('Produto', $result->count()) . " " . Str::plural('Encontrado', $result->count())}}
                                         <div class="page-title-subheading">
-                                            @can('add_users')
-                                             <a href="{{ route('create') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary"> Novo Usuário</a>
-                                              @endcan
                                         </div>
                                     </div>
                                 </div>
@@ -31,30 +28,6 @@
                         </ul> -->
 
                         <div class="main-card mb-3 card">
-
-
-                @if (\Session::has('success'))
-
-    <div class="alert alert-success" align="center" row="8">
-        <ul>
-            <li>{!! \Session::get('success') !!}</li>
-        </ul>
-    </div>
-@endif
-
- @if (\Session::has('danger'))
-
-    <div class="alert alert-danger" align="center" row="8">
-        <ul>
-            <li>{!! \Session::get('danger') !!}</li>
-        </ul>
-    </div>
-@endif
-
-
-
-<p></p>
-
 <div class="card-body">
     <div class="result-set">
 
@@ -63,13 +36,10 @@
             <tr>
                 <th style="font-size: 18px">Id</th>
                 <th style="font-size: 18px">Nome</th>
-                <th style="font-size: 18px">Email</th>
-                <th style="font-size: 18px">Função</th>
+                <th style="font-size: 18px">URL</th>
+                <th style="font-size: 18px">Id do usuário</th>
                 <th style="font-size: 18px">Criado em</th>
                 <th style="font-size: 18px">Ativo</th>
-                @can('edit_users', 'delete_users')
-                <th class="text-center" style="font-size: 18px">Ações</th>
-                @endcan
             </tr>
             </thead>
             <tbody>
@@ -85,14 +55,6 @@
                     @elseif ($item->active == 0)
                     <td style="font-size: 18px">Não</td>
                     @endif
-                    @can('edit_users')
-                    <td class="text-center">
-                        @include('shared._actions', [
-                            'entity' => 'users',
-                            'id' => $item->id
-                        ])
-                    </td>
-                    @endcan
                 </tr>
             @endforeach
             </tbody>

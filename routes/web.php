@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/	Route::resource('products', 'ProductsController');
     Route::resource('users', 'UserController');//Rotas para usuarios
     Route::resource('roles', 'RoleController');//Rotas para roles
     Route::resource('posts', 'PostController');//Rotas para posts

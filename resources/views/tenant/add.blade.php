@@ -1,18 +1,36 @@
 @extends('layouts.app2')
 @section('content')
+ <div class="app-main__outer">
+                    <div class="app-main__inner">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div>Novo usuário
+                                        <div class="page-title-subheading">
+                                            <a href="{{ route('users.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>Crie novos usuários para seu dashboard
 
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div> 
+                        <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+                            <li class="nav-item">
+                                <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
+                                    <span>?</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
+                                    <span>!</span>
+                                </a>
+                            </li>
+                        </ul>
 
-
-
-<div class="app-main__outer">
-    <div class="app-main__inner">
-
+                        <div class="main-card mb-3 card">
 @hasanyrole('Super Admin|admin')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Novo Usuário</div>
+
+        <div class="col-md-12">
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.add') }}">
@@ -68,10 +86,11 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                            <div class="form-group row" align="right">
-                            <div class="col-md-10">
+                            <div class="form-group row">
+                            
                                 <label for="role" class="col-md-4 col-form-label text-md-right">Função</label>
-                                <select id="role" name="role" type="role" required>
+                                <div class="col-md-6">
+                                <select id="role" name="role" type="role" required class="mb-2 mr-2 dropdown-toggle btn btn-primary">
                                     <option></option>
                                     <option value="admin">Administrador</option>
                                     <option value="user">Usuário</option>
@@ -86,13 +105,14 @@
         </main>
     </div>
 @else
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Add User</div>
+<div class="main-card mb-3 card">
 
-                <div class="card-body">Verifique sobre as permissões necessárias com seu Administrador.</div></div></div></div>
+                <div class="card-body">
+                    Você não possui permissões
+                </div>
 @endrole
+
+                        </div>
+</div>
 
 @endsection

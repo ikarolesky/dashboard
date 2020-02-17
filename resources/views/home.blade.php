@@ -1,14 +1,22 @@
 @extends('layouts.app2')
 
 @section('content')
+ <div class="app-main__outer">
+                    <div class="app-main__inner">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div>Dashboard
+                                        <div class="page-title-subheading">
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
 
-<div class="app-main__outer">
-    <div class="app-main__inner">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 ">
-                    <div class="card">
-                        <div class="card-header">Dashboard</div>
+                        <div class="main-card mb-3 card">
+
+
 
                     <div class="card-body">
                     @if (session('status'))
@@ -16,7 +24,7 @@
                             {{ session('status') }}
                     </div>
                     @endif
-                    You are logged in!
+                    Bem-vindo, {{Auth::user()->name}}!!
                    </div>
                 </div>
             </div>
