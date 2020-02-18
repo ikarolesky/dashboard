@@ -31,22 +31,43 @@
 <div class="card-body">
     <div class="result-set">
 
+
         <table id="datatable1" class="table table-striped table-bordered" style="width:100%">
             <thead>
             <tr>
                 <th style="font-size: 18px">Id</th>
                 <th style="font-size: 18px">Nome</th>
                 <th style="font-size: 18px">URL</th>
+                <th style="font-size: 18px">Plataformas</th>
                 <th style="font-size: 18px">Criado em</th>
                 <th style="font-size: 18px">Ativo</th>
+
             </tr>
             </thead>
             <tbody>
-            @foreach($result as $item)
+            @foreach($products as $item)
                 <tr>
                     <td style="font-size: 18px">{{ $item->id }}</td>
                     <td style="font-size: 18px">{{ $item->name }}</td>
                     <td style="font-size: 18px">{{ $item->url }}</td>
+                    <td style="font-size: 18px"><li>
+                        <?php
+                        $plat = App\Product::find($item->id)->plataforms
+                        ?>
+                        @foreach ($plat as $plot)
+                        <li>
+                        @if ($plot->plataforma_id == '1')
+                        Monetizze
+                        @endif
+                        @if($plot->plataforma_id == '2')
+                        PerfectPay
+                        @endif                
+                        @if($plot->plataforma_id == '3')
+                        Braip
+                        @endif
+                        </li>
+                        @endforeach
+                    </td>
                     <td style="font-size: 18px">{{ $item->created_at->DiffforHumans() }}</td>
                     @if ($item->is_active == 1)
                     <td style="font-size: 18px">Sim</td>

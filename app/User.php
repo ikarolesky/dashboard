@@ -62,6 +62,11 @@ public function isAdmin()
    return $this->roles()->where('users', 1)->first();
 }
 
+public function products()
+{
+    return $this->hasMany(Product::class);
+}
+
 }
 
 

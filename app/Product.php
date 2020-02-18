@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Plataformaprod;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\MailResetPasswordToken;
 use Hyn\Tenancy\Traits\UsesTenantConnection;
@@ -20,4 +21,10 @@ class Product extends Model
         'name','id','url','is_active', 'user_id',
     ];
     protected $table = 'produto';
+
+    public function plataforms()
+{
+    return $this->hasMany(Plataformaprod::class);
+}
+
 }

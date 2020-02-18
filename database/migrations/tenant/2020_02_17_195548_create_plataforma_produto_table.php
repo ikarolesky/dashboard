@@ -17,9 +17,9 @@ class CreatePlataformaProdutoTable extends Migration
             $table->bigIncrements('id');
             $table->string('product_key');
             $table->string('basic_authentication');
-            $table->integer('product_id');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
-            $table->integer('plataforma_id');
+            $table->unsignedInteger('plataforma_id');
             $table->string('codigo_produto');
         });
     }

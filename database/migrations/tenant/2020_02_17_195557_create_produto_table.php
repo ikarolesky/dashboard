@@ -17,7 +17,7 @@ class CreateProdutoTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('url');
-            $table->integer('user_id');
+            $table->unsignedInteger('user_id');
             $table->boolean('is_active')->default(0);
             $table->timestamps();
 

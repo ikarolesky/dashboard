@@ -19,8 +19,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $result = Product::all();
-    return view('products.index', compact('result'));
+        $products = Product::all();
+    return view('products.index', compact('products'));
      }
 
     /**
@@ -61,7 +61,7 @@ class ProductsController extends Controller
 
         foreach ($request->addmore as $value)
         {
-          $teste =  Plataformaprod::create([
+             Plataformaprod::create([
             'product_key' => $value['product_key'],
             'basic_authentication' => $value['basic_authentication'],
             'codigo_produto' => $value['codigo_produto'],
@@ -81,7 +81,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
