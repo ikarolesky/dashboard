@@ -1,5 +1,5 @@
 <?php
-
+use App\Plataforma;
 use App\Permission;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 class TenantDatabaseSeeder extends Seeder
 {
     public function run()
-    {
+    {   $this->addPlataforma();
         $this->addRolesAndPermissions();
         $permissions = Permission::defaultPermissions();
         foreach ($permissions as $perms) {
@@ -71,5 +71,12 @@ class TenantDatabaseSeeder extends Seeder
 
         Role::create(['name'=> 'trafego']);
         Role::create(['name'=> 'Super Admin']);
+    }
+
+    private function addPlataforma()
+    {
+        Plataforma::create(['name' => 'Monetizze']);
+        Plataforma::create(['name' => 'Perfect Pay']);
+        Plataforma::create(['name' => 'Braip']);
     }
 }
