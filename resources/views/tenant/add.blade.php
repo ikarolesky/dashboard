@@ -7,7 +7,7 @@
                                 <div class="page-title-heading">
                                     <div>Novo usuário
                                         <div class="page-title-subheading">
-                                            <a href="{{ route('users.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>Crie novos usuários para seu dashboard
+                                            <a href="{{ route('users.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>
 
                                         </div>
                                     </div>

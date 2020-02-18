@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
 use App\Product;
+use App\Plataforma;
+use App\Plataformaprod;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductsController extends Controller
@@ -16,7 +19,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $result = Product::latest()->paginate();
+        $result = Product::all();
     return view('products.index', compact('result'));
      }
 
@@ -27,7 +30,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $plataforma = Plataforma::all('name','id');
+        return view('products.add', compact('plataforma'));
     }
 
     /**
@@ -38,7 +42,35 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+        'name' => 'bail|required|unique:produto|min:2',
+        'url' => 'required|unique:produto',
+    ]);
+        $user_id = Auth::user()->id;
+    if ( $product = Product::create([
+        'user_id' => $user_id,
+        'name' => $request['name'],
+        'url' => $request['url'],
+        'is_active' => $request['is_active'],
+    ])){
+       flash('Produto criado.');
+        }
+    else {
+        flash()->error('Não foi possivel criar produto.');
+    }
+
+        foreach ($request->addmore as $value)
+        {
+          $teste =  Plataformaprod::create([
+            'product_key' => $value['product_key'],
+            'basic_authentication' => $value['basic_authentication'],
+            'codigo_produto' => $value['codigo_produto'],
+            'plataforma_id' => $value['plataforma'],
+            'product_id' => $product->id,
+        ]);
+        }
+    return redirect()->route('produtos.index');
+
     }
 
     /**

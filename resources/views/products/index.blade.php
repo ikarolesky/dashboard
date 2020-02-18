@@ -7,8 +7,8 @@
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
-                                    <div>{{ $result->total() }} {{ Str::plural('Produto', $result->count()) . " " . Str::plural('Encontrado', $result->count())}}
-                                        <div class="page-title-subheading">
+                                    <div>Meus Produtos
+                                        <div class="page-title-subheading"><a href="{{ route('produtos.create') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary"> Novo Produto</a>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +37,6 @@
                 <th style="font-size: 18px">Id</th>
                 <th style="font-size: 18px">Nome</th>
                 <th style="font-size: 18px">URL</th>
-                <th style="font-size: 18px">Id do usuário</th>
                 <th style="font-size: 18px">Criado em</th>
                 <th style="font-size: 18px">Ativo</th>
             </tr>
@@ -47,12 +46,11 @@
                 <tr>
                     <td style="font-size: 18px">{{ $item->id }}</td>
                     <td style="font-size: 18px">{{ $item->name }}</td>
-                    <td style="font-size: 18px">{{ $item->email }}</td>
-                    <td style="font-size: 18px">{{ $item->roles->implode('name', ', ') }}</td>
+                    <td style="font-size: 18px">{{ $item->url }}</td>
                     <td style="font-size: 18px">{{ $item->created_at->DiffforHumans() }}</td>
-                    @if ($item->active == 1)
+                    @if ($item->is_active == 1)
                     <td style="font-size: 18px">Sim</td>
-                    @elseif ($item->active == 0)
+                    @elseif ($item->is_active == 0)
                     <td style="font-size: 18px">Não</td>
                     @endif
                 </tr>
@@ -61,7 +59,7 @@
         </table>
 
         <div class="text-center">
-            {{ $result->links() }}
+
         </div>
 
 

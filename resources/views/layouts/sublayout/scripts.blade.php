@@ -1,3 +1,20 @@
+<script type="text/javascript">
+   
+    var i = 0;
+       
+    $("#add").click(function(){
+   
+        ++i;
+   
+        $("#dynamicTable").append('<tr><td><select id="plataforma" name="addmore['+i+'][plataforma]" placeholder="Plataforma" class="form-control"><option value="1">Monetizze</option><option value="2">Plataforma 2</option><option value="3">Plataforma 3</option></select></td><td><input type="text" name="addmore['+i+'][codigo_produto]" placeholder="Código do Produto" class="form-control" /></td><td><input type="text" name="addmore['+i+'][product_key]" placeholder="Product Key" class="form-control" /></td><td><input type="text" name="addmore['+i+'][basic_authentication]" placeholder="Basic Authentication" class="form-control" /></td><td><button type="button" class="btn btn-danger remove-tr">-</button></td></tr>');
+    });
+
+    $(document).on('click', '.remove-tr', function(){  
+         $(this).parents('tr').remove();
+    });  
+   
+</script>
+  
 <script>
     $("#doc").keydown(function(){
     try {

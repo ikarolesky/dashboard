@@ -19,6 +19,8 @@ class CreatePlataformaProdutoTable extends Migration
             $table->string('basic_authentication');
             $table->integer('product_id');
             $table->timestamps();
+            $table->integer('plataforma_id');
+            $table->string('codigo_produto');
         });
     }
 
