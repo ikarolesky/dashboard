@@ -130,8 +130,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'addmore.*.plataforma' => [
+            'unique' => 'Cada produto só pode possuir uma instancia de cada plataforma.',
         ],
     ],
 

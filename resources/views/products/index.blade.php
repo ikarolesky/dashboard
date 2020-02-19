@@ -35,7 +35,6 @@
         <table id="datatable1" class="table table-striped table-bordered" style="width:100%">
             <thead>
             <tr>
-                <th style="font-size: 18px">Id</th>
                 <th style="font-size: 18px">Nome</th>
                 <th style="font-size: 18px">URL</th>
                 <th style="font-size: 18px">Plataformas</th>
@@ -48,7 +47,6 @@
             <tbody>
             @foreach($products as $item)
                 <tr>
-                    <td style="font-size: 18px">{{ $item->id }}</td>
                     <td style="font-size: 18px">{{ $item->name }}</td>
                     <td style="font-size: 18px">{{ $item->url }}</td>
                     <td style="font-size: 18px">

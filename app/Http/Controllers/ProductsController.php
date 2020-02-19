@@ -60,6 +60,9 @@ class ProductsController extends Controller
     else {
         flash()->error('Não foi possivel criar produto.');
     }
+        $this->validate($request,[
+            'addmore.*.plataforma' => 'required|unique:plataforma_produto,plataforma_id,'. $product->id . ',id,product_id'
+        ]);
 
         foreach ($request->addmore as $value)
         {
