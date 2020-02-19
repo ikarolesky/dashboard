@@ -50,22 +50,20 @@
                     <td style="font-size: 18px">{{ $item->id }}</td>
                     <td style="font-size: 18px">{{ $item->name }}</td>
                     <td style="font-size: 18px">{{ $item->url }}</td>
-                    <td style="font-size: 18px"><li>
+                    <td style="font-size: 18px">
                         <?php
-                        $plat = App\Product::find($item->id)->plataforms
+                        $plataformas = App\Product::find($item->id)->plataforms
                         ?>
-                        @foreach ($plat as $plot)
-                        <li>
-                        @if ($plot->plataforma_id == '1')
-                        Monetizze
+                        @foreach ($plataformas as $plat)
+                        @if ($plat->plataforma_id == '1')
+                        <p style="font-size: 18px">Monetizze</p>
                         @endif
-                        @if($plot->plataforma_id == '2')
-                        PerfectPay
-                        @endif                
-                        @if($plot->plataforma_id == '3')
-                        Braip
+                        @if($plat->plataforma_id == '2')
+                        <p style="font-size: 18px">PerfectPay</p>
                         @endif
-                        </li>
+                        @if($plat->plataforma_id == '3')
+                        <p style="font-size: 18px">Braip</p>
+                        @endif
                         @endforeach
                     </td>
                     <td style="font-size: 18px">{{ $item->created_at->DiffforHumans() }}</td>
