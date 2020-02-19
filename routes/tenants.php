@@ -11,7 +11,7 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/', function () {
     return view('welcome'); //Rota pagina inicial
 });
-    Route::resource('produtos', 'ProductsController');
+    Route::resource('products', 'ProductsController');
     Route::put('users.status/{user}' , 'UserController@status')->name('users.status');
     Route::put('users.status2/{user}' , 'UserController@status2')->name('users.status2');
     Auth::routes(['register' => false]);//Rotas de login e logout sem /register

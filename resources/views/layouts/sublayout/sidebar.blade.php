@@ -75,14 +75,14 @@
                             </a>
                             <ul>
                             <li>
-                            <a href=" {{route('produtos.index') }}">
+                            <a href=" {{route('products.index') }}">
                             <i class="fas fa-user-plus">
                             </i>
                                                      Todos os produtos
                             </a>
                             </li>
                             <li>
-                            <a href="{{ route('produtos.create') }}">
+                            <a href="{{ route('products.create') }}">
                             <i class="fas fa-server">
                             </i>
                                                     Novo

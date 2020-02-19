@@ -1,7 +1,7 @@
 <!-- Name Form Input -->
 <div class="form-group ">
-    {!! Form::label('name', 'Nome do produto') !!}
-    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Peel Gold']) !!}
+    {!! Form::label('nome', 'Nome do produto') !!}
+    {!! Form::text('nome', null, ['class' => 'form-control', 'placeholder' => 'Peel Gold']) !!}
 </div>
 
 <!-- URL Form Input -->

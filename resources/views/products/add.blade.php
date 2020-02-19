@@ -9,7 +9,7 @@
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
                                     <div>Novo Produto
-                                        <div class="page-title-subheading"><a href="{{ route('produtos.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>
+                                        <div class="page-title-subheading"><a href="{{ route('products.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                             <div class="ibox float-e-margins">
                             <div class="ibox-content">
 
-                            {!! Form::open(['route' => 'produtos.store']) !!}
+                            {!! Form::open(['route' => 'products.store']) !!}
                             @include('products._forms')
                             <!-- Submit Form Button -->
                             {!! Form::submit('Criar', ['class' => 'mb-2 mr-2 btn-transition btn btn-outline-primary']) !!}

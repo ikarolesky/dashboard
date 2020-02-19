@@ -5,6 +5,7 @@ use App\Product;
 use App\Plataforma;
 use App\Plataformaprod;
 use Illuminate\Http\Request;
+use App\Http\Requests\PlataformaRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::latest()->paginate();
     return view('products.index', compact('products'));
      }
 
@@ -42,18 +43,19 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
-        'name' => 'bail|required|unique:produto|min:2',
+        'nome' => 'bail|required|min:2|unique:produto,name',
         'url' => 'required|unique:produto',
     ]);
         $user_id = Auth::user()->id;
     if ( $product = Product::create([
         'user_id' => $user_id,
-        'name' => $request['name'],
+        'name' => $request['nome'],
         'url' => $request['url'],
         'is_active' => $request['is_active'],
     ])){
-       flash('Produto criado.');
+       flash()->success('Produto criado.');
         }
     else {
         flash()->error('Não foi possivel criar produto.');
@@ -69,7 +71,7 @@ class ProductsController extends Controller
             'product_id' => $product->id,
         ]);
         }
-    return redirect()->route('produtos.index');
+    return redirect()->route('products.index');
 
     }
 
@@ -92,8 +94,11 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+    $product = Product::find($id);
+    $plataform = Plataforma::all()->pluck('name', 'id');
+    $plataformprod = Plataformaprod::find($id);
+
+    return view('products.edit', compact('product', 'plataform', 'plataformprod'));    }
 
     /**
      * Update the specified resource in storage.
@@ -104,7 +109,39 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $plataform = implode('',$request->plataform);
+    // Get the Product Plataform
+    $product = Plataformaprod::where('plataforma_id', $request->plataform)->first();
+
+    // Product  Plataform
+    if(is_null($product))
+    {
+        $product = new Plataformaprod();
+        $product->fill
+    ([
+        'product_key' => $request['product_key'],
+        'basic_authentication' => $request['basic_authentication'],
+        'product_id' => $id,
+        'plataforma_id' => $plataform,
+        'codigo_produto' => $request['codigo_produto'],
+    ]);
+    $product->save();
+    }
+    else
+    {
+    $product->fill
+    ([
+        'product_key' => $request['product_key'],
+        'basic_authentication' => $request['basic_authentication'],
+        'product_id' => $id,
+        'plataforma_id' => $plataform,
+        'codigo_produto' => $request['codigo_produto'],
+    ]);
+    $product->save();
+    }
+
+    flash()->success('Produto Atualizado com sucesso.');
+    return redirect()->route('products.index');
     }
 
     /**

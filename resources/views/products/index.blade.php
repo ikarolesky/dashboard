@@ -7,8 +7,8 @@
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
-                                    <div>Meus Produtos
-                                        <div class="page-title-subheading"><a href="{{ route('produtos.create') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary"> Novo Produto</a>
+                                    <div>{{ $products->total() }} {{ Str::plural('Produto', $products->count()) . " " . Str::plural('Encontrado', $products->count())}}
+                                        <div class="page-title-subheading"><a href="{{ route('products.create') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary"> Novo Produto</a>
                                         </div>
                                     </div>
                                 </div>
@@ -41,6 +41,7 @@
                 <th style="font-size: 18px">Plataformas</th>
                 <th style="font-size: 18px">Criado em</th>
                 <th style="font-size: 18px">Ativo</th>
+                <th style="font-size: 18px">Ações</th>
 
             </tr>
             </thead>
@@ -72,6 +73,12 @@
                     @elseif ($item->is_active == 0)
                     <td style="font-size: 18px">Não</td>
                     @endif
+                    <td class="text-center">
+                        @include('products._actions', [
+                            'entity' => 'products',
+                            'id' => $item->id
+                        ])
+                    </td>
                 </tr>
             @endforeach
             </tbody>
