@@ -43,38 +43,55 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+    try
+    {
 
-        $this->validate($request, [
-        'nome' => 'bail|required|min:2|unique:produto,name',
-        'url' => 'required|unique:produto',
-    ]);
-        $user_id = Auth::user()->id;
-    if ( $product = Product::create([
-        'user_id' => $user_id,
-        'name' => $request['nome'],
-        'url' => $request['url'],
-        'is_active' => $request['is_active'],
-    ])){
-       flash()->success('Produto criado.');
-        }
-    else {
-        flash()->error('Não foi possivel criar produto.');
+            // Validate Request for name and url
+            $this->validate($request,
+                [
+                'nome' => 'bail|required|min:2|unique:produto,name',
+                'url' => 'required|unique:produto',
+                ]
+            );
+            // Grab the user->id
+            $user_id = Auth::user()->id;
+            // Create a new product
+            if($product = Product::create(
+                [
+                'user_id' => $user_id,
+                'name' => $request['nome'],
+                'url' => $request['url'],
+                'is_active' => $request['is_active'],
+                ]
+            ))
+            {
+               flash()->success('Produto criado.');
+            }
+            else
+            {
+                flash()->error('Não foi possivel criar produto.');
+            }
+            // For each of the addmore.*. fields create an entry on DB
+            foreach ($request->addmore as $value)
+            {
+                 Plataformaprod::create(
+                [
+                'product_key' => $value['product_key'],
+                'basic_authentication' => $value['basic_authentication'],
+                'codigo_produto' => $value['codigo_produto'],
+                'plataforma_id' => $value['plataforma'],
+                'product_id' => $product->id,
+                ]
+                );
+            }
+            return redirect()->route('products.index');
     }
-        $this->validate($request,[
-            'addmore.*.plataforma' => 'required|unique:plataforma_produto,plataforma_id,'. $product->id . ',id,product_id'
-        ]);
 
-        foreach ($request->addmore as $value)
-        {
-             Plataformaprod::create([
-            'product_key' => $value['product_key'],
-            'basic_authentication' => $value['basic_authentication'],
-            'codigo_produto' => $value['codigo_produto'],
-            'plataforma_id' => $value['plataforma'],
-            'product_id' => $product->id,
-        ]);
-        }
-    return redirect()->route('products.index');
+    catch (Exception $ex)
+    {
+            //Something went wrong
+            abort(500, 'Você inseriu uma plataforma duplicada!! Produto criado com apenas a primeira entrada.');
+    }
 
     }
 
