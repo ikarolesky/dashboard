@@ -1,2 +1,2 @@
     <a href="{{ route($entity.'.edit', [Str::singular($entity) => $id])  }}" class="mb-2 mr-2 btn-transition btn btn-outline-info">
-        <i class="metismenu-icon pe-7s-edit" style="font-size: 15px"> +Plataforma</a></i>
+        <i class="metismenu-icon pe-7s-edit" style="font-size: 15px"> Editar/Adicionar Plataformas</a></i>

@@ -6,8 +6,12 @@
                     <div class="app-main__inner">
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-shopbag icon-gradient bg-mean-fruit">
+                                        </i>
+                                    </div>
                                 <div class="page-title-heading">
-                                    <div>{{ $products->total() }} {{ Str::plural('Produto', $products->count()) . " " . Str::plural('Encontrado', $products->count())}}
+                                    <div>Produtos
                                         <div class="page-title-subheading"><a href="{{ route('products.create') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary"> Novo Produto</a>
                                         </div>
                                     </div>
@@ -82,9 +86,6 @@
             </tbody>
         </table>
 
-        <div class="text-center">
-
-        </div>
 
 
 

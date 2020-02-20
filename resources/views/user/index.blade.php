@@ -7,7 +7,11 @@
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
-                                    <div>{{ $result->total() }} {{ Str::plural('Usuário', $result->count()) . " " . Str::plural('Encontrado', $result->count())}}
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-users icon-gradient bg-mean-fruit">
+                                        </i>
+                                    </div>
+                                        <div>Usuários
                                         <div class="page-title-subheading">
                                             @can('add_users')
                                              <a href="{{ route('create') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary"> Novo Usuário</a>
@@ -79,7 +83,7 @@
                     <td style="font-size: 18px">{{ $item->name }}</td>
                     <td style="font-size: 18px">{{ $item->email }}</td>
                     <td style="font-size: 18px">{{ $item->roles->implode('name', ', ') }}</td>
-                    <td style="font-size: 18px">{{ $item->created_at->DiffforHumans() }}</td>
+                    <td style="font-size: 18px">{{ $item->created_at->format('M d Y H:m:s') }}</td>
                     @if ($item->active == 1)
                     <td style="font-size: 18px">Sim</td>
                     @elseif ($item->active == 0)
@@ -98,9 +102,6 @@
             </tbody>
         </table>
 
-        <div class="text-center">
-            {{ $result->links() }}
-        </div>
 
 
 

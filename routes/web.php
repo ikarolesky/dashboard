@@ -24,3 +24,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::fallback(function(){
+    return response()->json([
+        'message' => 'Page Not Found. If error persists, contact dev@kings7.com.br'], 404);
+});

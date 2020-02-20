@@ -9,6 +9,7 @@ use App\Http\Requests\PlataformaRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 
 
 class ProductsController extends Controller
@@ -20,7 +21,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate();
+        $products = Product::all();
     return view('products.index', compact('products'));
      }
 
@@ -87,13 +88,15 @@ class ProductsController extends Controller
             return redirect()->route('products.index');
     }
 
-    catch (Exception $ex)
+    catch (QueryException $e)
     {
-            //Something went wrong
-            abort(500, 'Você inseriu uma plataforma duplicada!! Produto criado com apenas a primeira entrada.');
+        if($e->getCode() === '23000')
+        {
+            return redirect()->route('products.create')->withErrors(['Plataforma com duplica!', 'Produto criado com apenas uma plataforma!', 'Para alterar as plataformas vá para', 'Produtos->Todos os Produtos->Editar\Adicionar Plataforma!',' Caso o erro persista contate dev@kings7.com.br']);
+        }
     }
 
-    }
+}
 
     /**
      * Display the specified resource.

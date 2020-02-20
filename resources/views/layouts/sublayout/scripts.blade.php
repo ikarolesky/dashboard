@@ -95,7 +95,7 @@
         });
 
     </script>
-    <script>
+<script>
 $(document).ready(function() {
     $('#datatable1').DataTable( {
         "language": {
@@ -115,21 +115,22 @@ $(document).ready(function() {
         "sPrevious": "Anterior",
         "sFirst": "Primeiro",
         "sLast": "Último"
-    },
+                 },
     "oAria": {
         "sSortAscending": ": Ordenar colunas de forma ascendente",
         "sSortDescending": ": Ordenar colunas de forma descendente"
-    },
+            },
     "select": {
         "rows": {
             "_": "Selecionado %d linhas",
             "0": "Nenhuma linha selecionada",
             "1": "Selecionado 1 linha"
+                }
+            }
         }
-    }
-}
     } );
-} );</script>
+} );
+</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>

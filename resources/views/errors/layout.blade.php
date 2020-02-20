@@ -46,8 +46,8 @@
         </style>
     </head>
     <body>
+        {{ HTML::image('images/logo-inverse.png', 'alt text', array('class' => 'css-class')) }}
         <div class="flex-center position-ref full-height">
-            {{ asset(images/logo-inverse.png) }}">
             <div class="content">
                 <div class="title">
                     @yield('message')

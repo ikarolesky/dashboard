@@ -67,7 +67,7 @@
 
                             <li>
                             <a href="#">
-                            <i class="metismenu-icon pe-7s-users">
+                            <i class="metismenu-icon pe-7s-shopbag">
                             </i>
                                                      Produtos
                             <i class="metismenu-state-icon pe-7s-angle-down caret-left">
@@ -76,14 +76,14 @@
                             <ul>
                             <li>
                             <a href=" {{route('products.index') }}">
-                            <i class="fas fa-user-plus">
+                            <i class="fas fa-server">
                             </i>
                                                      Todos os produtos
                             </a>
                             </li>
                             <li>
                             <a href="{{ route('products.create') }}">
-                            <i class="fas fa-server">
+                            <i class="fas fa-plus">
                             </i>
                                                     Novo
                             </a>
