@@ -78,7 +78,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">Telefone</label>
 
                             <div class="col-md-6">
-                                <input id="phone" class="form-control cel-sp-mask" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="off" autofocus placeholder="(99)99999-9999" maxlength="11">
+                                <input id="phone" class="form-control cel-sp-mask" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="off" autofocus placeholder="(99)99999-9999" maxlength="11" pattern="[0-9]">
 
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <label for="doc" class="col-md-4 col-form-label text-md-right">Documento(CPF/CNPJ)</label>
 
                             <div class="col-md-6">
-                                <input id="doc" class="form-control" type="text" name="doc" placeholder="012.345.678-90 / 01.234.567.0001-00">
+                                <input id="doc" class="form-control" type="text" name="doc" placeholder="012.345.678-90 / 01.234.567.0001-00" pattern="[0-9]">
 
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <label for="address_zip" class="col-md-4 col-form-label text-md-right">CEP</label>
 
                             <div class="col-md-6">
-                                <input id="address_zip" class="form-control cep-mask" type="text" name="address_zip" value="{{ old('address_zip') }}" required autocomplete="address_zip" autofocus placeholder="12345-000" size="10" maxlenght="9">
+                                <input id="address_zip" class="form-control cep-mask" type="text" name="address_zip" value="{{ old('address_zip') }}" required autocomplete="address_zip" autofocus placeholder="12345-000" size="10" maxlenght="9" pattern="[0-9]">
 
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             <label for="address_number" class="col-md-4 col-form-label text-md-right">Número</label>
 
                             <div class="col-md-6">
-                                <input id="address_number" class="form-control" type="text" name="address_number" value="{{ old('address_number') }}" required autocomplete="address_number" autofocus placeholder="9999" size="6">
+                                <input id="address_number" class="form-control" type="text-md-right" name="address_number" value="{{ old('address_number') }}" required autocomplete="address_number" autofocus placeholder="9999" size="6" pattern="[0-9a-z]">
 
                             </div>
                         </div>
