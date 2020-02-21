@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Database\QueryException;
 
 
 class RegisterController extends Controller
@@ -67,29 +68,37 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+{
+  try
+  {
+    $subdomain = $data['subdomain'];
+    $name = $data['name'];
+    $email = $data['email'];
+    $password = $data['password'];
+    $phone = $data['phone'];
+    $doc = $data['doc'];
+    $zip = $data['address_zip'];
+    $address = $data['address'];
+    $number = $data['address_number'];
+    $comp = $data['address_comp'];
+    $district = $data['address_district'];
+    $city = $data['address_city'];
+    $state = $data['address_state'];
+    $company = $data['company'];
+    $tenant = $tenant = Tenant::registerTenant($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $subdomain, $company);
 
-   $subdomain = $data['subdomain'];
-   $name = $data['name'];
-   $email = $data['email'];
-   $password = $data['password'];
-   $phone = $data['phone'];
-   $doc = $data['doc'];
-   $zip = $data['address_zip'];
-   $address = $data['address'];
-   $number = $data['address_number'];
-   $comp = $data['address_comp'];
-   $district = $data['address_district'];
-   $city = $data['address_city'];
-   $state = $data['address_state'];
-   $company = $data['company'];
-   $tenant = $tenant = Tenant::registerTenant($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $subdomain, $company);
+    $this->redirectTo = 'https://' . $tenant->hostname->fqdn . '/login';
+    return $tenant->admin;
+  }
+  catch (QueryException $e)
+  {
+    if($e->getCode() === '23000')
+      {
+              return redirect()->back()->withErrors(['URL já está em uso', 'Favor escolher nova URL', 'Este será seu acesso permanente!',  'Em caso de dúvidas ou persistência no erro contate dev@kings7.com.br']);
+      }
+  }
 
-   $this->redirectTo = 'http://' . $tenant->hostname->fqdn . '/login';
-
-   return $tenant;
-    }
-
+}
 
 }
 
