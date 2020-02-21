@@ -43,6 +43,7 @@
                 <th style="font-size: 18px">URL</th>
                 <th style="font-size: 18px">Plataformas</th>
                 <th style="font-size: 18px">Criado em</th>
+                <th style="font-size: 18px">Editado em</th>
                 <th style="font-size: 18px">Ativo</th>
                 <th style="font-size: 18px">Ações</th>
 
@@ -69,7 +70,8 @@
                         @endif
                         @endforeach
                     </td>
-                    <td style="font-size: 18px">{{ $item->created_at->DiffforHumans() }}</td>
+                    <td style="font-size: 18px">{{ $item->created_at->isoFormat('ddd, DD  MMM YYYY h:mm:ss a') }}</td>
+                    <td style="font-size: 18px">{{ $item->updated_at->isoFormat('ddd, DD  MMM YYYY h:mm:ss a') }}</td>
                     @if ($item->is_active == 1)
                     <td style="font-size: 18px">Sim</td>
                     @elseif ($item->is_active == 0)

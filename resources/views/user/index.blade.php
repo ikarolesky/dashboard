@@ -83,7 +83,7 @@
                     <td style="font-size: 18px">{{ $item->name }}</td>
                     <td style="font-size: 18px">{{ $item->email }}</td>
                     <td style="font-size: 18px">{{ $item->roles->implode('name', ', ') }}</td>
-                    <td style="font-size: 18px">{{ $item->created_at->format('M d Y H:m:s') }}</td>
+                    <td style="font-size: 18px">{{ $item->created_at->isoFormat('ddd, DD  MMM YYYY h:mm:ss a') }}</td>
                     @if ($item->active == 1)
                     <td style="font-size: 18px">Sim</td>
                     @elseif ($item->active == 0)

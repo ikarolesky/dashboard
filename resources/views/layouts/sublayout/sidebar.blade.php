@@ -1,6 +1,4 @@
-
-        <div class="scrollbar-sidebar">
-            
+            <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
                 @if (Auth::check())
             <ul class="vertical-nav-menu">
@@ -64,7 +62,7 @@
                                  Loja</li>
 
 
-
+                            @can('add_posts')
                             <li>
                             <a href="#">
                             <i class="metismenu-icon pe-7s-shopbag">
@@ -89,7 +87,7 @@
                             </a>
                             </li>
                             </ul>
-
+                            @endcan
                     <li class="app-sidebar__heading"> Misc</li>
                     <li>
                     <a href="#">
@@ -102,6 +100,4 @@
                     @endif
         </div>
     </div>
-    
 </div>
-
