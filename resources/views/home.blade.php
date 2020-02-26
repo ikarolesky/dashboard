@@ -1,5 +1,7 @@
-@extends('layouts.app2')
-
+@extends('layouts.app3')
+@section('tittle')
+Dashboard
+@endsection
 @section('content')
  <div class="app-main__outer">
                     <div class="app-main__inner">
