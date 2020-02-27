@@ -2,8 +2,8 @@
 @section('title')
 {{$user->name}}
                 <ol class="breadcrumb ml-1">
-                  <li class="breadcrumb-item">Home</li>
-                  <li class="breadcrumb-item">Usuários</li>
+                  <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/users">Usuários</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Editar: {{$user->name}}</li>
                 </ol>
 @endsection
