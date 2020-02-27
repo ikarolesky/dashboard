@@ -59,7 +59,7 @@ Novo Usuário
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">Função</label>
                             <div class="col-md-6">
-                                <select id="role" name="role" type="role" required class="mb-2 mr-2 dropdown-toggle btn btn-primary">
+                                <select id="role" name="role" type="role" required class="custom-select">
                                     <option></option>
                                     <option value="admin">Administrador</option>
                                     <option value="user">Usuário</option>
