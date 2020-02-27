@@ -1,9 +1,13 @@
 @extends('layouts.app3')
 @section('title')
 Editar Produtos
+                <ol class="breadcrumb ml-1">
+                  <li class="breadcrumb-item">Home</li>
+                  <li class="breadcrumb-item">Produtos</li>
+                  <li class="breadcrumb-item active" aria-current="page">Editar: {{$product->name}}</li>
+                </ol>
 @endsection
 @section('content')
-<div class="card-tittle">{{ $product->name}}</div>
 <div class="card-body">
 <a href="{{ route('products.index') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Voltar</a>
     <div class="table-responsive">

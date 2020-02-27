@@ -2,6 +2,11 @@
 
 @section('title')
 Produtos
+                <ol class="breadcrumb ml-1">
+                  <li class="breadcrumb-item">Home</li>
+                  <li class="breadcrumb-item">Produtos</li>
+                  <li class="breadcrumb-item active" aria-current="page">Todos</li>
+                </ol>
 @endsection
 @section('content')
 <a href="{{ route('products.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"> Novo Produto

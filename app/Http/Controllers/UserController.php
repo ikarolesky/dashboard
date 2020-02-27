@@ -134,7 +134,7 @@ public function status(Request $request, $id)
 
 
     $user->save();
-    return redirect()->route('users.index')->with('success', 'Usuário ativado!');
+    return redirect()->route('users.index')->with('success', 'Usuário ativo!');
 }
 
 public function status2(Request $request, $id)

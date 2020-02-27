@@ -2,6 +2,11 @@
 
 @section('title')
 Usuários
+                <ol class="breadcrumb ml-1">
+                  <li class="breadcrumb-item">Home</li>
+                  <li class="breadcrumb-item">Usuários</li>
+                  <li class="breadcrumb-item active" aria-current="page">Todos</li>
+                </ol>
 @endsection
 @section('content')
 
@@ -41,9 +46,21 @@ Usuários
                     <td>{{ $item->roles->implode('name', ', ') }}</td>
                     <td>{{ $item->created_at->isoFormat('DD/MM/YY') }}</td>
                     @if ($item->active == 1)
-                    <td>Sim</td>
+                    <td>
+                        <div class="chip chip-success">
+                            <div class="chip-body">
+                                <div class="chip-text"><i class="feather icon-check" ></i>Ativo</div>
+                            </div>
+                        </div>
+                    </td>
                     @elseif ($item->active == 0)
-                    <td>Não</td>
+                    <td>
+                        <div class="chip chip-danger">
+                            <div class="chip-body">
+                                <div class="chip-text"><i class="feather icon-x" ></i>Inativo</div>
+                            </div>
+                        </div>
+                    </td>
                     @endif
                     @can('edit_users')
                     <td class="text-center">
