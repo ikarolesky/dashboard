@@ -48,11 +48,23 @@ Produtos
             </td>
             <td>{{ $item->created_at->isoFormat('DD/MM/YY') }}</td>
             <td>{{ $item->updated_at->isoFormat('DD/MM/YY') }}</td>
-            @if ($item->is_active == 1)
-            <td>Sim</td>
-            @elseif ($item->is_active == 0)
-            <td>Não</td>
-            @endif
+                    @if ($item->is_active == 1)
+                    <td>
+                        <div class="chip chip-success">
+                            <div class="chip-body">
+                                <div class="chip-text"><i class="feather icon-check" ></i>Ativo</div>
+                            </div>
+                        </div>
+                    </td>
+                    @elseif ($item->is_active == 0)
+                    <td>
+                        <div class="chip chip-danger">
+                            <div class="chip-body">
+                                <div class="chip-text"><i class="feather icon-x" ></i>Inativo</div>
+                            </div>
+                        </div>
+                    </td>
+                    @endif
             <td class="text-center">
                 @include('products._actions', [
                     'entity' => 'products',
