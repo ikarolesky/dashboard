@@ -1,64 +1,101 @@
 @extends('layouts.app3')
-@section('tittle')
+@section('title')
 Editar Produtos
 @endsection
 @section('content')
-                            <div class="page-title-wrapper">
-                                <div class="page-title-heading">
-                                    Editar Produto: {{ $product->name}}
-                                        <div class="page-title-subheading">
-                                            <a href="{{ route('products.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>
-                                        </div>
-                                </div>
-                            </div>
-<div class="table-responsive">
- <table class="table table-hover-animation mb-0">
+<div class="card-tittle">{{ $product->name}}</div>
+<div class="card-body">
+<a href="{{ route('products.index') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Voltar</a>
+    <div class="table-responsive">
+        <table class="table">
             <thead>
-            <tr>
-                <th>Plataformas deste produto</th>
-            </tr>
+                <tr>
+                    <th>Plataformas deste produto</th>
+                    <th>Product Key</th>
+                    <th>Basic Authentication</th>
+                    <th>Código do Produto</th>
+                </tr>
             </thead>
-            <tbody class="table-hover-animation">
+            <tbody>
                 <tr>
                     <td>
-                        <?php
-                        $plataformas = App\Product::find($product->id)->plataforms
-                        ?>
-                        @foreach ($plataformas as $plat)
-                        @if ($plat->plataforma_id == '1')
-                        <p>Monetizze</p>
-                        @endif
-                        @if($plat->plataforma_id == '2')
-                        <p>PerfectPay</p>
-                        @endif
-                        @if($plat->plataforma_id == '3')
-                        <p>Braip</p>
-                        @endif
-                        @if(is_null($plataformas))
-                        <p>Este produto ainda não tem nenhuma plataforma adicionada</p>
-                        @endif
-                        @endforeach
+                            <?php
+                            $plataformas = App\Product::find($product->id)->plataforms
+                            ?>
+                            @foreach ($plataformas as $plat)
+                            @if ($plat->plataforma_id == '1')
+                            <p>Monetizze</p>
+                            @endif
+                            @if($plat->plataforma_id == '2')
+                            <p>PerfectPay</p>
+                            @endif
+                            @if($plat->plataforma_id == '3')
+                            <p>Braip</p>
+                            @endif
+                            @if(is_null($plataformas))
+                            <p>Este produto ainda não tem nenhuma plataforma adicionada</p>
+                            @endif
+                            @endforeach
+                    </td>
+                    <td>
+                            @foreach ($plataformas as $prod)
+                            @if ($prod->plataforma_id == '1')
+                            <p>{{$prod->product_key}}</p>
+                            @endif
+                            @if($prod->plataforma_id == '2')
+                            <p>{{$prod->product_key}}</p>
+                            @endif
+                            @if($prod->plataforma_id == '3')
+                            <p>{{$prod->product_key}}</p>
+                            @endif
+                            @endforeach
+                    </td>
+                    <td>
+                            @foreach ($plataformas as $basic)
+                            @if ($basic->plataforma_id == '1')
+                            <p>{{$basic->basic_authentication}}</p>
+                            @endif
+                            @if($basic->plataforma_id == '2')
+                            <p>{{$basic->basic_authentication}}</p>
+                            @endif
+                            @if($basic->plataforma_id == '3')
+                            <p>{{$basic->basic_authentication}}</p>
+                            @endif
+                            @endforeach
+                    </td>
+                    <td>
+                            @foreach ($plataformas as $codigo)
+                            @if ($codigo->plataforma_id == '1')
+                            <p>{{$codigo->codigo_produto}}</p>
+                            @endif
+                            @if($codigo->plataforma_id == '2')
+                            <p>{{$codigo->codigo_produto}}</p>
+                            @endif
+                            @if($codigo->plataforma_id == '3')
+                            <p>{{$codigo->codigo_produto}}</p>
+                            @endif
+                            @endforeach
                     </td>
                 </tr>
             </tbody>
-</table>            
+        </table>
 
-                        {!! Form::model($product, ['method' => 'PUT', 'route' => ['products.update',  $product->id ] ]) !!}
-                        <div class="form-group @if ($errors->has('roles')) has-error @endif">
-                            {!! Form::label('plataform[]', 'Plataforma') !!}
-                            {!! Form::select('plataform[]', $plataform, isset($products) ? $products->plataform->pluck('id')->toArray() : null,  ['class' => 'form-control', 'select']) !!}
-                            {!! Form::label('product_key', 'Product Key') !!}
-                            {!! Form::text('product_key', null, ['class' => 'form-control', ]) !!}
-                            {!! Form::label('basic_authentication', 'Basic Authentication') !!}
-                            {!! Form::text('basic_authentication', null, ['class' => 'form-control', ]) !!}
-                            {!! Form::label('codigo_produto', 'Codigo do Produto') !!}
-                            {!! Form::text('codigo_produto', null, ['class' => 'form-control', ]) !!}
-                        </div>
-
-
-
-                            <!-- Submit Form Button -->
-                            {!! Form::submit('Salvar', ['class' => 'mb-2 mr-2 btn-transition btn btn-outline-primary']) !!}
-                        {!! Form::close() !!}
-</div>                        
+            {!! Form::model($product, ['method' => 'PUT', 'route' => ['products.update',  $product->id ] ]) !!}
+        <div class="form-group @if ($errors->has('roles')) has-error @endif">
+            {!! Form::label('plataform[]', 'Plataforma') !!}
+            {!! Form::select('plataform[]', $plataform, isset($products) ? $products->plataform->pluck('id')->toArray() : null,  ['class' => 'form-control', 'select']) !!}
+            {!! Form::label('product_key', 'Product Key') !!}
+            {!! Form::text('product_key', null, ['class' => 'form-control','required' ]) !!}
+            {!! Form::label('basic_authentication', 'Basic Authentication') !!}
+            {!! Form::text('basic_authentication', null, ['class' => 'form-control', 'required' ]) !!}
+            {!! Form::label('codigo_produto', 'Codigo do Produto') !!}
+            {!! Form::text('codigo_produto', null, ['class' => 'form-control','required' ]) !!}
+        </div>
+            <!-- Submit Form Button -->
+            <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">
+                Salvar
+            </button>
+            {!! Form::close() !!}
+    </div>  
+</div>
 @endsection

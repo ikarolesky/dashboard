@@ -51,7 +51,7 @@
         @if($role->name === 'Super Admin')
 
         @else
-            @include('shared._permissions', [
+            @include('_permissions', [
                           'title' => $role->name ,
                           'model' => $role ])
             

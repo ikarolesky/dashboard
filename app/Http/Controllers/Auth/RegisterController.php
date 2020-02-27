@@ -77,15 +77,8 @@ class RegisterController extends Controller
     $password = $data['password'];
     $phone = $data['phone'];
     $doc = $data['doc'];
-    $zip = $data['address_zip'];
-    $address = $data['address'];
-    $number = $data['address_number'];
-    $comp = $data['address_comp'];
-    $district = $data['address_district'];
-    $city = $data['address_city'];
-    $state = $data['address_state'];
     $company = $data['company'];
-    $tenant = $tenant = Tenant::registerTenant($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $subdomain, $company);
+    $tenant = $tenant = Tenant::registerTenant($name, $email, $password,$phone,$doc, $subdomain, $company);
 
     $this->redirectTo = 'https://' . $tenant->hostname->fqdn . '/login';
     return $tenant->admin;

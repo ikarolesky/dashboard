@@ -12,6 +12,7 @@
         "caouecs/laravel-lang": "~4.0",
         "fideloper/proxy": "^4.0",
         "hyn/multi-tenant": "^5.5",
+        "igorescobar/jquery-mask-plugin": "^1.14",
         "laracasts/flash": "^3.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",

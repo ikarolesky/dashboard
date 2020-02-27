@@ -17,7 +17,7 @@ class CreateUserForTenantController extends Controller
 
     public function index()
     {
-    	return view('tenant.add');
+    	return view('user.add');
     }
 
 

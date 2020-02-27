@@ -44,7 +44,7 @@ class Tenant
         }
     }
 
-    public static function registerTenant($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $subdomain, $company): Tenant
+    public static function registerTenant($name, $email, $password,$phone,$doc, $subdomain, $company): Tenant
     {
         // Convert all to lowercase
         $subdomain = strtolower($subdomain);
@@ -63,14 +63,14 @@ class Tenant
         app(Environment::class)->tenant($hostname->website);
 
         // Make the registered user the default Admin of the site.
-        $admin = static::makeAdmin($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $company);
+        $admin = static::makeAdmin($name, $email, $password,$phone,$doc, $company);
 
         return new Tenant($website, $hostname, $admin);
     }
 
-    private static function makeAdmin($name, $email, $password,$phone,$doc,$zip,$address,$number,$comp,$district,$city,$state, $company): User
+    private static function makeAdmin($name, $email, $password,$phone,$doc, $company): User
     {
-        $admin = User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password), 'phone' => $phone,'address_zip' => $zip,'address' => $address,'address_number' => $number,'address_comp' => $comp,'address_city' => $city,'address_district' => $district,'address_state'=> $state, 'doc' => $doc, 'company' => $company]);
+        $admin = User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password), 'phone' => $phone, 'doc' => $doc, 'company' => $company]);
         $admin->guard_name = 'web';
         $admin->assignRole('Super Admin');
 

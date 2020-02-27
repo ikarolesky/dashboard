@@ -4,29 +4,24 @@
 Adicionar Produto
 @endsection
 @section('content')
-                                <div class="page-title-heading">
-                                    <div>Novo Produto
-                                        <div class="page-title-subheading"><a href="{{ route('products.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-primary">Voltar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+<a href="{{ route('products.index') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Voltar</a>
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
-                            {!! Form::open(['route' => 'products.store']) !!}
-                            @include('products._forms')
-                            <!-- Submit Form Button -->
-                            {!! Form::submit('Criar', ['class' => 'mb-2 mr-2 btn-transition btn btn-outline-primary']) !!}
-                            {!! Form::close() !!}
+{!! Form::open(['route' => 'products.store']) !!}
+@include('products._forms')
+<!-- Submit Form Button -->
+<button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">
+    Criar
+</button>
+{!! Form::close() !!}
 
 
 @endsection

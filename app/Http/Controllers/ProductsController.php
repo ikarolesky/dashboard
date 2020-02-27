@@ -92,7 +92,7 @@ class ProductsController extends Controller
     {
         if($e->getCode() === '23000')
         {
-            return redirect()->route('products.create')->withErrors(['Plataforma com duplica!', 'Produto criado com apenas uma plataforma!', 'Para alterar as plataformas vá para', 'Produtos->Todos os Produtos->Editar\Adicionar Plataforma!',' Caso o erro persista contate dev@kings7.com.br']);
+            return redirect()->route('products.create')->withErrors(['Plataforma com duplica!', 'Produto criado com apenas uma plataforma!', 'Para alterar as plataformas vá para: Produtos->Todos os Produtos->Editar\Adicionar Plataforma!',' Caso o erro persista contate dev@kings7.com.br']);
         }
     }
 
