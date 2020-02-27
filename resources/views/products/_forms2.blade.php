@@ -26,10 +26,11 @@
 <script type="text/javascript">
     var i = 0;
     $("#add").click(function(){
+        if (i >= 2) return;
         ++i;
         $("#dynamicTable").append('<tr><td><select id="plataforma" name="addmore['+i+'][plataforma]" placeholder="Plataforma" class="form-control">@foreach($plataforma as $plat)<option value="{{$plat->id}}">{{$plat->name}}</option>@endforeach</select></td><td><input type="text" name="addmore['+i+'][codigo_produto]" placeholder="Código do Produto" class="form-control" /></td><td><input type="text" name="addmore['+i+'][product_key]" placeholder="Product Key" class="form-control" /></td><td><input type="text" name="addmore['+i+'][basic_authentication]" placeholder="Basic Authentication" class="form-control" /></td><td><button type="button" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 remove-tr"><i class="feather icon-minus"></i></button></td></tr>');
     });
-    $(document).on('click', '.remove-tr', function(){
+   $(document).on('click', '.remove-tr', function(){
          $(this).parents('tr').remove();
     });
 </script>
