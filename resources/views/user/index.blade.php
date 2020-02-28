@@ -54,10 +54,7 @@ Usuários
                         return $value->name == "Super Admin";
                     }))
                     @else
-                    <div class="custom-control custom-switch custom-control-inline">
-                      <input type="checkbox" class="custom-control-input" checked id="switch" data-id="{{ $user->id }}" name="status" {{ $user->status == 1 ? 'checked' : '' }}>
-                      <label class="custom-control-label mr-1" for="switch"></label>
-                    </div>
+                    <input type="checkbox" data-id="{{ $user->id }}" name="status" class="js-switch " {{ $user->status == 1 ? 'checked' : '' }}>
                     @endif
                     </td>
                     @can('edit_users')
@@ -72,9 +69,13 @@ Usuários
             @endforeach
             </tbody>
         </table>
+<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
+elems.forEach(function(html) {
+    let switchery = new Switchery(html,  { size: 'small', color: '#7367F0', secondaryColor    : '#e2e2e2' });
+});</script>
 <script>$(document).ready(function(){
-    $('.custom-control-input').change(function () {
+    $('.js-switch').change(function () {
         let status = $(this).prop('checked') === true ? 1 : 0;
         let userId = $(this).data('id');
         $.ajax({

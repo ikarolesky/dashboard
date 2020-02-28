@@ -52,10 +52,7 @@ Produtos
             <td>{{ $item->created_at->isoFormat('DD/MM/YY') }}</td>
             <td>{{ $item->updated_at->isoFormat('DD/MM/YY') }}</td>
             <td class="text-center">
-            <div class="custom-control custom-switch custom-control-inline">
-              <input type="checkbox" class="custom-control-input" checked id="switch" data-id="{{ $item->id }}" name="status" {{ $item->is_active == 1 ? 'checked' : '' }}>
-              <label class="custom-control-label mr-1" for="switch"></label>
-            </div>
+            <input type="checkbox" data-id="{{ $item->id }}" name="is_active" class="js-switch " {{ $item->status == 1 ? 'checked' : '' }}>
             </td>
             <td class="text-center">
                 @include('products._actions', [
@@ -67,8 +64,13 @@ Produtos
     @endforeach
     </tbody>
 </table>
+<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+elems.forEach(function(html) {
+    let switchery = new Switchery(html,  { size: 'small', color: '#7367F0', secondaryColor    : '#e2e2e2' });
+});</script>
 <script>$(document).ready(function(){
-    $('.custom-control-input').change(function () {
+    $('.js-switch').change(function () {
         let is_active = $(this).prop('checked') === true ? 1 : 0;
         let prodId = $(this).data('id');
         $.ajax({
