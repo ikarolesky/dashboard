@@ -40,6 +40,6 @@
 @include('layouts.sublayout.newfooter')
 <!-- END: Footer-->
 <!-- BEGIN: Scripts-->
-@include('layouts.sublayout.scripts')
+@include('layouts.sublayout.newscripts')
 <!-- END: Scripts-->
 </html>

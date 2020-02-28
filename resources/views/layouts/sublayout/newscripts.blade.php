@@ -2,7 +2,43 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
-
+<script>
+$(document).ready(function() {
+    $('#datatable1').DataTable( {
+        "language": {
+    "sEmptyTable": "Nenhum registro encontrado",
+    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+    "sInfoPostFix": "",
+    "sInfoThousands": ".",
+    "sLengthMenu": "_MENU_ resultados por página",
+    "sLoadingRecords": "Carregando...",
+    "sProcessing": "Processando...",
+    "sZeroRecords": "Nenhum registro encontrado",
+    "sSearch": "Pesquisar",
+    "oPaginate": {
+        "sNext": "Próximo",
+        "sPrevious": "Anterior",
+        "sFirst": "Primeiro",
+        "sLast": "Último"
+                 },
+    "oAria": {
+        "sSortAscending": ": Ordenar colunas de forma ascendente",
+        "sSortDescending": ": Ordenar colunas de forma descendente"
+            },
+    "select": {
+        "rows": {
+            "_": "Selecionado %d linhas",
+            "0": "Nenhuma linha selecionada",
+            "1": "Selecionado 1 linha"
+                }
+            }
+        }
+    } );
+} );
+</script>
+  
     <!-- Adicionando Javascript -->
     <script type="text/javascript" >
 
@@ -76,3 +112,12 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+<script src="../../../app-assets/js/scripts/datatables/datatable.min.js"></script>
