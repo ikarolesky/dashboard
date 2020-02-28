@@ -36,7 +36,7 @@ class CreateUserForTenantController extends Controller
         ]);
             $user->guard_name = 'web';
             $user->assignRole($request['role']);
-            return redirect ('users')->with('success', 'Usuário criado com sucesso!');
+            return redirect ('users')->with('success', 'Usuário cadastrado com sucesso!');
 
     }
 }
