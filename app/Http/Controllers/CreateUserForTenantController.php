@@ -32,7 +32,7 @@ class CreateUserForTenantController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'active' => $data['active'],
+            'status' => $data['status'],
         ]);
             $user->guard_name = 'web';
             $user->assignRole($request['role']);

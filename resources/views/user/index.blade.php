@@ -50,10 +50,15 @@ Usuários
                     <td>{{ $user->roles->implode('name', ', ') }}</td>
                     <td>{{ $user->created_at->isoFormat('DD/MM/YY') }}</td>
                     <td class="text-center">
+                    @if ($user->roles->contains(function ($value, $key) {
+                        return $value->name == "Super Admin";
+                    }))
+                    @else
                     <div class="custom-control custom-switch custom-control-inline">
                       <input type="checkbox" class="custom-control-input" checked id="switch" data-id="{{ $user->id }}" name="status" {{ $user->status == 1 ? 'checked' : '' }}>
                       <label class="custom-control-label mr-1" for="switch"></label>
                     </div>
+                    @endif
                     </td>
                     @can('edit_users')
                     <td class="text-center">
