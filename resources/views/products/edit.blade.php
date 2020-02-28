@@ -1,6 +1,6 @@
 @extends('layouts.app3')
 @section('title')
-Editar Produtos
+{{$product->name}}
 @endsection
 @section('breadcrumbs')
                 <ol class="breadcrumb ml-1">
