@@ -52,7 +52,7 @@ Produtos
             <td>{{ $item->created_at->isoFormat('DD/MM/YY') }}</td>
             <td>{{ $item->updated_at->isoFormat('DD/MM/YY') }}</td>
             <td class="text-center">
-            <input type="checkbox" data-id="{{ $item->id }}" name="is_active" class="js-switch " {{ $item->status == 1 ? 'checked' : '' }}>
+            <input type="checkbox" data-id="{{ $item->id }}" name="is_active" class="js-switch " {{ $item->is_active == 1 ? 'checked' : '' }}>
             </td>
             <td class="text-center">
                 @include('products._actions', [

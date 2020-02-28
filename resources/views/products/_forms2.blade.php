@@ -1,9 +1,9 @@
 <table class="table table-bordered" id="dynamicTable">
     <tr>
         <th>Plataforma</th>
-        <th>Product Key</th>
-        <th>Basic Authentication</th>
         <th>Código do Produto</th>
+        <th>Chave de Autenticação</th>
+        <th>Chave do Produto</th>
         <th></th>
     </tr>
     <tr>
@@ -13,9 +13,9 @@
             @endforeach
         </select>
         </td>
-        <td><input type="text" name="addmore[0][codigo_produto]" placeholder="Código do Produto" class="form-control" /></td>
-        <td><input type="text" name="addmore[0][product_key]" placeholder="Product Key" class="form-control" /></td>
-        <td><input type="text" name="addmore[0][basic_authentication]" placeholder="Basic Authentication" class="form-control" /></td>
+        <td><input type="text" name="addmore[0][codigo_produto]" class="form-control" /></td>
+        <td><input type="text" name="addmore[0][basic_authentication]" class="form-control" /></td>
+        <td><input type="text" name="addmore[0][product_key]" class="form-control" /></td>
         <td><button type="button" name="add" id="add" class="btn btn-icon btn-icon rounded-circle btn-success mr-1 mb-1"><i class="feather icon-plus"></i></button></td>
     </tr>
 </table>

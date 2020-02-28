@@ -15,8 +15,8 @@ class CreatePlataformaProdutoTable extends Migration
     {
         Schema::create('plataforma_produto', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('product_key');
-            $table->string('basic_authentication');
+            $table->string('product_key')->nullable();
+            $table->string('basic_authentication')->nullable();
             $table->unsignedInteger('product_id');
             $table->timestamps();
             $table->unsignedInteger('plataforma_id');
