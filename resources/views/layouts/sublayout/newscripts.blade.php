@@ -1,4 +1,4 @@
-    <script>
+<script>
     $("#doc").keydown(function(){
     try {
         $("#doc").unmask();

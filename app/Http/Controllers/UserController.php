@@ -17,8 +17,8 @@ class UserController extends Controller
 
     public function index()
 {
-    $result = User::all();
-    return view('user.index', compact('result'));
+    $users = User::all();
+    return view('user.index', compact('users'));
 }
 
 public function create()
@@ -122,32 +122,6 @@ private function syncPermissions(Request $request, $user)
 
     $user->syncRoles($roles);
     return $user;
-}
-
-public function status(Request $request, $id)
-{
-    // Get the user
-    $user = User::findOrFail($id);
-
-    // Update user
-    $user->fill($request->toArray());
-
-
-    $user->save();
-    return redirect()->route('users.index')->with('success', 'Usuário ativo!');
-}
-
-public function status2(Request $request, $id)
-{
-    // Get the user
-    $user = User::findOrFail($id);
-
-    // Update user
-    $user->fill($request->toArray());
-
-
-    $user->save();
-    return redirect()->route('users.index')->with('danger', 'Usuário desativado!');
 }
 
 }

@@ -2,6 +2,9 @@
 
 @section('title')
 Produtos
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 @endsection
 @section('breadcrumbs')
                 <ol class="breadcrumb ml-1">
@@ -48,23 +51,12 @@ Produtos
             </td>
             <td>{{ $item->created_at->isoFormat('DD/MM/YY') }}</td>
             <td>{{ $item->updated_at->isoFormat('DD/MM/YY') }}</td>
-                    @if ($item->is_active == 1)
-                    <td>
-                        <div class="chip chip-success">
-                            <div class="chip-body">
-                                <div class="chip-text"><i class="feather icon-check" ></i>Ativo</div>
-                            </div>
-                        </div>
-                    </td>
-                    @elseif ($item->is_active == 0)
-                    <td>
-                        <div class="chip chip-danger">
-                            <div class="chip-body">
-                                <div class="chip-text"><i class="feather icon-x" ></i>Inativo</div>
-                            </div>
-                        </div>
-                    </td>
-                    @endif
+            <td class="text-center">
+            <div class="custom-control custom-switch custom-control-inline">
+              <input type="checkbox" class="custom-control-input" checked id="switch" data-id="{{ $item->id }}" name="status" {{ $item->is_active == 1 ? 'checked' : '' }}>
+              <label class="custom-control-label mr-1" for="switch"></label>
+            </div>
+            </td>
             <td class="text-center">
                 @include('products._actions', [
                     'entity' => 'products',
@@ -75,4 +67,20 @@ Produtos
     @endforeach
     </tbody>
 </table>
+<script>$(document).ready(function(){
+    $('.custom-control-input').change(function () {
+        let is_active = $(this).prop('checked') === true ? 1 : 0;
+        let prodId = $(this).data('id');
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            url: '{{ route('products.status') }}',
+            data: {'is_active': is_active, 'produto_id': prodId},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
+</script>
 @endsection

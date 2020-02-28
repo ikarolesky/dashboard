@@ -1,4 +1,4 @@
-@if ($item->roles->contains(function ($value, $key) {
+@if ($user->roles->contains(function ($value, $key) {
     return $value->name == "Super Admin";
 }))
 @can('edit_'.$entity)

@@ -11,14 +11,15 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/', function () {
     return view('welcome'); //Rota pagina inicial
 });
+    Route::get('/status/update', 'UserStatusController@updateStatus')->name('user.status');
+    Route::get('/products/update', 'ProductsController@updateStatus')->name('products.status');
     Route::resource('products', 'ProductsController');
-    Route::put('users.status/{user}' , 'UserController@status')->name('users.status');
-    Route::put('users.status2/{user}' , 'UserController@status2')->name('users.status2');
     Auth::routes(['register' => false]);//Rotas de login e logout sem /register
     Route::resource('users', 'UserController');//Rotas para usuarios
     Route::resource('posts', 'PostController');//Rotas para posts
     Route::get('user/add', 'CreateUserForTenantController@index')->name('create');//Rotas para criação de usuário /Get
     Route::post('user/add', 'CreateUserForTenantController@create')->name('user.add');//Rota para criação de usuário /Post
+
 
 });
 

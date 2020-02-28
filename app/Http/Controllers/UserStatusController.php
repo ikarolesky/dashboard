@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -16,18 +15,12 @@ class UserStatusController extends Controller
     // Use Authorizable;
 	Use RegistersUsers;
 
-public function update(Request $request, $id)
+public function updateStatus(Request $request)
 {
-    // Get the user
-    $user = User::findOrFail($id);
-
-    // Update user
-    $user->fill($request->toArray());
-
-
+    $user = User::findOrFail($request->user_id);
+    $user->status = $request->status;
     $user->save();
-    flash()->success('User has been updated.');
-    return redirect()->route('users.index');
-}
 
+    return response()->json(['message' => 'User status updated successfully.']);
+}
 }

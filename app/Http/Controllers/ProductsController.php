@@ -177,4 +177,13 @@ class ProductsController extends Controller
     {
         //
     }
+
+    public function updateStatus(Request $request)
+{
+    $products = Product::findOrFail($request->produto_id);
+    $products->is_active = $request->is_active;
+    $products->save();
+
+    return response()->json(['message' => 'Product status updated successfully.']);
+}
 }
