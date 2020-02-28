@@ -16,7 +16,10 @@ Produtos
 @section('content')
 <a href="{{ route('products.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"> Novo Produto
 </a>
-<table id="datatable1" class="table table-striped table-bordered" style="width:100%">
+<div class="card">
+<div table="responsive">
+<div class="table-responsive">
+<table class="table" id="datatable1" >
     <thead>
         <tr>
             <th>Nome</th>
@@ -64,7 +67,8 @@ Produtos
     @endforeach
     </tbody>
 </table>
-
+</div>
+</div>
 <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
 elems.forEach(function(html) {

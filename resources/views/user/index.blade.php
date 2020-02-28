@@ -27,7 +27,10 @@ Usuários
          {!! \Session::get('danger') !!}
     </div>
 @endif
-<table id="datatable1" class="table table-striped table-bordered" style="width:100%">
+<div class="card">
+<div table="responsive">
+<div class="table-responsive">
+<table class="table" id="datatable1" >
             <thead>
                 <tr>
                     <th>Id</th>
@@ -69,6 +72,9 @@ Usuários
             @endforeach
             </tbody>
         </table>
+</div>
+</div>
+</div>
 <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
 elems.forEach(function(html) {
