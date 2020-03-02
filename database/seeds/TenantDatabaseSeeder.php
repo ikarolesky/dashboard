@@ -1,18 +1,22 @@
 <?php
 use App\Plataforma;
 use App\Permission;
+use App\CartaoBanco;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
 class TenantDatabaseSeeder extends Seeder
 {
     public function run()
-    {   $this->addPlataforma();
+    {
+        $this->addBanco();
+        $this->addPlataforma();
         $this->addRolesAndPermissions();
         $permissions = Permission::defaultPermissions();
-        foreach ($permissions as $perms) {
+        foreach ($permissions as $perms)
+    {
             Permission::firstOrCreate(['name' => $perms]);
-        }
+    }
 
             $this->command->info('Default Permissions added.');
 
@@ -52,6 +56,28 @@ class TenantDatabaseSeeder extends Seeder
         // factory(\App\Post::class, 30)->create();
         // $this->command->info('Some Posts data seeded.');
         // $this->command->warn('All done :)');
+        DB::table('cartao_ciclo')->insert([
+            ['ciclo' =>'7.00'],
+            ['ciclo' =>'10.00'],
+            ['ciclo' =>'15.00'],
+            ['ciclo' =>'20.00'],
+            ['ciclo' =>'30.00'],
+            ['ciclo' =>'50.00'],
+            ['ciclo' =>'75.00'],
+            ['ciclo' =>'80.00'],
+            ['ciclo' =>'100.00'],
+            ['ciclo' =>'150.00'],
+            ['ciclo' =>'160.00'],
+            ['ciclo' =>'250.00'],
+            ['ciclo' =>'400.00'],
+            ['ciclo' =>'600.00'],
+            ['ciclo' =>'800.00'],
+            ['ciclo' =>'1250.00'],
+            ['ciclo' =>'1600.00'],
+            ['ciclo' =>'2000.00'],
+            ['ciclo' =>'2400.00'],
+            ['ciclo' =>'3000.00'],
+        ]);
     }
 
     private function addRolesAndPermissions()
@@ -78,5 +104,12 @@ class TenantDatabaseSeeder extends Seeder
         Plataforma::create(['name' => 'Monetizze']);
         Plataforma::create(['name' => 'Perfect Pay']);
         Plataforma::create(['name' => 'Braip']);
+    }
+
+    private function addBanco()
+    {
+        CartaoBanco::create(['nome' => 'PagCorp']);
+        CartaoBanco::create(['nome' => 'PayPal']);
+        CartaoBanco::create(['nome' => 'NuBank']);
     }
 }

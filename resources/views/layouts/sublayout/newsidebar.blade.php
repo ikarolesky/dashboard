@@ -13,7 +13,6 @@
         <!-- END: LOGO/TOGGLE-->
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
-@if (Auth::check())
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="navigation-header"><span>Painel de controle</span></li>
                 <li class=" nav-item"><a href="/home"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
@@ -39,13 +38,19 @@
                         </li>
                     </ul>
                 </li>
+                <li class=" navigation-header"><span>Campanhas</span>
+                </li>
+                <li class=" nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Data List">Cartões</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('cards.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List View">Todos os cartões</span></a>
+                        </li>
+                        <li><a href="{{ route('cards.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Thumb View">Novo</span></a>
+                        </li>
+                    </ul>
+                </li>
                 @endcan
                 </li>
-@else
-
             </ul>
-@endif
-
         </div>
         </div>
     <!-- END: Main Menu-->

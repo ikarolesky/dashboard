@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->boolean('status')->default(1);
+            $table->boolean('status')->default(0);
             $table->string('phone')->nullable();
             $table->string('doc')->nullable();
             $table->string('address_zip')->nullable();
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('address_comp')->nullable();
             $table->string('address_district')->nullable();
             $table->string('address_city')->nullable();
-            $table->string('address_country')->nullable();
+            $table->string('address_country')->default('Brasil');
             $table->string('address_state')->nullable();
             $table->boolean('company')->nullable();
         });
