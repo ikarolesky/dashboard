@@ -19,7 +19,7 @@ Produtos
 <div class="card">
 <div table="responsive">
 <div class="table-responsive">
-<table class="table" id="datatable1" >
+<table class="table " id="datatable1">
     <thead>
         <tr>
             <th>Nome</th>
