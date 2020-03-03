@@ -16,10 +16,10 @@ class CreateCartaoTable extends Migration
         Schema::create('cartao', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('status')->default(1);
-            $table->integer('6digitos');
+            $table->string('digitos');
             $table->string('tipo');
-            $table->float('saldo', 10, 2);
-            $table->unsignedInteger('cartao_ciclo_id');
+            $table->string('saldo');
+            $table->unsignedInteger('cartao_ciclo_id')->nullable();
             $table->unsignedInteger('cartao_banco_id');
             $table->timestamps();
         });
@@ -33,6 +33,15 @@ class CreateCartaoTable extends Migration
         Schema::create('cartao_banco', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->timestamps();
+        });
+
+        Schema::create('lancamento', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('descrição');
+            $table->string('valor');
+            $table->enum('tipo',['C','D']);
+            $table->unsignedInteger('cartao_id');
             $table->timestamps();
         });
     }

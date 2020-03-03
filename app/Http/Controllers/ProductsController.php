@@ -132,39 +132,21 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $plataform = implode('',$request->plataform);
-    // Get the Product Plataform
-    $product = Plataformaprod::where('plataforma_id', $request->plataform)->first();
+            foreach ($request->addmore as $value)
+            {
+               Plataformaprod::where('product_id', $id);
 
-    // Product  Plataform
-    if(is_null($product))
-    {
-        $product = new Plataformaprod();
-        $product->fill
-    ([
-        'product_key' => $request['product_key'],
-        'basic_authentication' => $request['basic_authentication'],
-        'product_id' => $id,
-        'plataforma_id' => $plataform,
-        'codigo_produto' => $request['codigo_produto'],
-    ]);
-    $product->save();
-    }
-    else
-    {
-    $product->fill
-    ([
-        'product_key' => $request['product_key'],
-        'basic_authentication' => $request['basic_authentication'],
-        'product_id' => $id,
-        'plataforma_id' => $plataform,
-        'codigo_produto' => $request['codigo_produto'],
-    ]);
-    $product->save();
-    }
-
-    flash()->success('Produto Atualizado com sucesso.');
-    return redirect()->route('products.index');
+               ->fill(
+                [
+                'product_key' => $value['product_key'],
+                'basic_authentication' => $value['basic_authentication'],
+                'codigo_produto' => $value['codigo_produto'],
+                'plataforma_id' => $value['plataforma_id'],
+                'product_id' => $id,
+                ]
+                );
+            }
+            return redirect()->route('products.index');
     }
 
     /**

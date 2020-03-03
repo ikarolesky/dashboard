@@ -19,7 +19,7 @@
 
 
             {!! Form::model($product, ['method' => 'PUT', 'route' => ['products.update',  $product->id ] ]) !!}
-        <div class="form-group">
+ <div class="form-group">
                     <label for="name">Nome do Produto</label>
                         <input id="name" type="text" name="name" value="{{$product->name}}" class="form-control">
                 </div>
@@ -28,37 +28,37 @@
                 @if($b->plataforma_id == '1')
                 <div class="card-header">Monetizze</div>
                 <div class="card-body">
-                <input type="hidden" name="addmore[0][plataforma_id]" value="1">
+                <input type="hidden" id="plataforma_id" name="plataforma_id" value="1">
                 <label for="codigo_produto">Chave de Autenticação</label>
-                <input type="text" name="addmore[0][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control">
+                <input id="codigo_produto" type="text" name="codigo_produto" value="{{$b->codigo_produto}}" class="form-control">
                 <label for="product_key">Chave de Produto</label>
-                <input type="text" name="addmore[0][product_key]" value="{{$b->product_key}}" class="form-control">
+                <input id="product_key" type="text" name="product_key" value="{{$b->product_key}}" class="form-control">
                 <label for="basic_authentication">Chave de Autenticação</label>
-                <input type="text" name="addmore[0][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control">
+                <input id="basic_authentication" type="text" name="basic_authentication" value="{{$b->basic_authentication}}" class="form-control">
                 </div>
                 @endif
                 @if($b->plataforma_id == '2')
                 <div class="card-header">Perfect Pay</div>
                 <div class="card-body">
-                <input type="hidden" name="addmore[1][plataforma_id]" value="2">
+                <input type="hidden" id="plataforma_id" name="plataforma_id" value="2">
                 <label for="codigo_produto">Chave de Autenticação</label>
-                <input type="text" name="addmore[1][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control">
+                <input id="codigo_produto" type="text" name="codigo_produto" value="{{$b->codigo_produto}}" class="form-control">
                 <label for="product_key">Chave de Produto</label>
-                <input type="text" name="addmore[1][product_key]" value="{{$b->product_key}}" class="form-control">
+                <input id="product_key" type="text" name="product_key" value="{{$b->product_key}}" class="form-control">
                 <label for="basic_authentication">Chave de Autenticação</label>
-                <input type="text" name="addmore[1][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control">
+                <input id="basic_authentication" type="text" name="basic_authentication" value="{{$b->basic_authentication}}" class="form-control">
                 </div>
                 @endif
                 @if($b->plataforma_id == '3')
                 <div class="card-header">Braip</div>
                 <div class="card-body">
-                <input type="hidden" name="addmore[2][plataforma_id]" value="3">
+                <input type="hidden" id="plataforma_id" name="plataforma_id" value="3">
                 <label for="codigo_produto">Chave de Autenticação</label>
-                <input type="text" name="addmore[2][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control">
+                <input id="codigo_produto" type="text" name="codigo_produto" value="{{$b->codigo_produto}}" class="form-control">
                 <label for="product_key">Chave de Produto</label>
-                <input type="text" name="addmore[2][product_key]" value="{{$b->product_key}}" class="form-control">
+                <input id="product_key" type="text" name="product_key" value="{{$b->product_key}}" class="form-control">
                 <label for="basic_authentication">Chave de Autenticação</label>
-                <input type="text" name="addmore[2][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control">
+                <input id="basic_authentication" type="text" name="basic_authentication" value="{{$b->basic_authentication}}" class="form-control">
                 </div>
                 @endif
                 @endforeach

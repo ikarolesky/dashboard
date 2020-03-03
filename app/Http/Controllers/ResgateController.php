@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Cartao;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class CartoesController extends Controller
+class ResgateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class CartoesController extends Controller
      */
     public function index()
     {
-    $cards = Cartao::all();
-    return view('card.index', compact('cards'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class CartoesController extends Controller
      */
     public function create()
     {
-    return view('card.add');
+        //
     }
 
     /**
@@ -37,19 +34,7 @@ class CartoesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-        'cartao_banco_id' => 'required',
-        'digitos' => 'required|min:6|max:7',
-        'saldo' => 'required',
-    ]);
-
-    if ( $card = Cartao::create($request->all())) {
-        flash('Cartão adicionado.');
-    } else {
-        flash()->error('Não foi possível criar o cartão, verifique as informações.');
-    }
-
-    return redirect()->route('cards.index');
+        //
     }
 
     /**
@@ -71,8 +56,7 @@ class CartoesController extends Controller
      */
     public function edit($id)
     {
-    $cards = Cartao::find($id);
-    return view('card.edit', compact('cards'));
+        //
     }
 
     /**
@@ -84,21 +68,7 @@ class CartoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $this->validate($request, [
-        'digitos' => 'bail|required|min:6|max:6',
-        'cartao_banco_id' => 'required',
-        'tipo' => 'required',
-    ]);
-
-    // Get the user
-    $card = Cartao::findOrFail($id);
-
-    // Update user
-    $card->fill($request->all());
-
-    $card->save();
-    flash()->success('User has been updated.');
-    return redirect()->route('cards.index');
+        //
     }
 
     /**
@@ -110,11 +80,5 @@ class CartoesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function resgate($id)
-    {
-    $cards = Cartao::find($id);
-    return view('card.resgate', compact('cards'));
     }
 }

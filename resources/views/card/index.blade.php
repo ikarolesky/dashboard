@@ -37,7 +37,7 @@ Cartões
                     <th>Banco</th>
                     <th>6 Dígitos</th>
                     <th>Saldo</th>
-                    <th>Status</th>
+                    <th class="text-center">Status</th>
                     <th class="text-center">Gerenciar Saldo</th>
                     @can('edit_posts', 'delete_posts')
                     <th class="text-center">Ações</th>
@@ -48,20 +48,26 @@ Cartões
             @foreach($cards as $card)
                 <tr>
                     <td scope="row">{{ $card->id }}</td>
-                    <td>{{ $card->cartao_banco_id }}
-                        <h2> {{ $card->tipo}}</h2>
+                    <td>
+                        @if ($card->cartao_banco_id == '1')
+                        <p>PagCorp</p>
+                        @endif
+                        @if($card->cartao_banco_id == '2')
+                        <p>PayPal</p>
+                        @endif
+                        @if($card->cartao_banco_id == '3')
+                        <p>NuBank</p>
+                        @endif
+                        <h6> {{ $card->tipo}}</h6>
                     </td>
-                    <td>{{ $card->6digitos }}</td>
-                    <td>{{ $card->saldo }}</td>
-                    <td>{{ $card->status }}</td>
+                    <td>{{ $card->digitos }}</td>
+                    <td class="teste">{{ $card->saldo }}</td>
                     <td class="text-center">
                     <input type="checkbox" data-id="{{ $card->id }}" name="status" class="js-switch " {{ $card->status == 1 ? 'checked' : '' }}>
-                    @endif
                     </td>
                     @can('edit_users')
                     <td class="text-center">
                         @include('card._actions', [
-                            'entity' => 'cards',
                             'id' => $card->id
                         ])
                     </td>
@@ -91,12 +97,19 @@ elems.forEach(function(html) {
             type: "get",
             dataType: "json",
             url: '{{ route('card.status') }}',
-            data: {'status': status, 'card_id': cardId},
+            data: {'status': status, 'cartao_id': cardId},
             success: function (data) {
                 console.log(data.message);
             }
         });
     });
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/app-assets/js/scripts/moneymask/money.mask.js"></script>
+<script>
+$(document).ready(function($){
+$('.teste').mask('000.000.000.000.000,00', {reverse: true});
 });
 </script>
 @endsection
