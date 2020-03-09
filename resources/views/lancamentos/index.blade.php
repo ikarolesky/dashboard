@@ -43,9 +43,9 @@ Cartões
                     <td scope="row">{{ $lancamento->id }}</td>
                     <td>{{ $lancamento->descrição}}</td>
                     @if ($lancamento->tipo == 'D')
-                    <td class="">{{'-'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</td>
+                    <td><font color="red">{{'-'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</font></td>
                     @else
-                    <td class="">{{'+'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</td>
+                    <td class=""><font color="blue">{{'+'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</font></td>
                     @endif
                     <td>{{ $lancamento->tipo }}</td>
                     <td class="text-center">{{ $lancamento->created_at->isoFormat('DD/MM/YY') }}</td>

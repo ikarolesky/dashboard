@@ -24,8 +24,9 @@
                             <input hidden id="tipo" class="form-control" type="string" name="tipo" value="C">
                             <input hidden id="saldo2" class="form-control" type="integer" name="saldo2" value="{{number_format($cards->saldo,2,',','.')}}">
                             <input hidden id="cartao_id" class="form-control" type="integer" name="cartao_id" value="{{$cards->id}}">
-                <label for="descricao">Descrição</label>
-                            <input id="descricao" class="form-control" type="string" name="descricao">
+                            <input hidden id="descricao" class="form-control" type="text" name="descricao" value="Recarga - {{$cards->digitos}}">
+                <label >Descrição</label>
+                            <input class="form-control" type="string" value="Recarga - {{$cards->digitos}}" disabled>
         </div>
 
             <!-- Submit Form Button -->

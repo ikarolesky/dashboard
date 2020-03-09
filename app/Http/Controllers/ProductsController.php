@@ -134,19 +134,18 @@ class ProductsController extends Controller
     {
             foreach ($request->addmore as $value)
             {
-               Plataformaprod::where('product_id', $id);
-
-               ->fill(
+               Plataformaprod::where('product_id', $id)
+               ->where('plataforma_id', $value['plataforma_id'])
+               ->update(
                 [
                 'product_key' => $value['product_key'],
                 'basic_authentication' => $value['basic_authentication'],
                 'codigo_produto' => $value['codigo_produto'],
                 'plataforma_id' => $value['plataforma_id'],
-                'product_id' => $id,
                 ]
                 );
             }
-            return redirect()->route('products.index');
+            return redirect(route('products.index'));
     }
 
     /**

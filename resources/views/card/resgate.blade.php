@@ -24,8 +24,9 @@
                             <input hidden id="tipo" class="form-control" type="string" name="tipo" value="D">
                             <input hidden id="saldo2" class="form-control" type="string" name="saldo2" value="{{number_format($cards->saldo,2,',','.')}}">
                             <input hidden id="cartao_id" class="form-control" type="integer" name="cartao_id" value="{{$cards->id}}">
-                <label for="descricao">Descrição</label>
-                            <input id="descricao" class="form-control" type="string" name="descricao">
+                            <input hidden id="descricao" class="form-control" type="text" name="descricao" value="Resgate - {{$cards->digitos}}">
+                <label>Descrição</label>
+                            <input class="form-control" type="string" value="Resgate - {{$cards->digitos}}" disabled>
         </div>
             <!-- Submit Form Button -->
             <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">
