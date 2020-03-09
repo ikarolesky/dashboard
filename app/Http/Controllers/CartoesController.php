@@ -46,7 +46,7 @@ class CartoesController extends Controller
 
     if ( $card = Cartao::create($request->all())) {
         Lancamento::create([
-            'descrição' => 'Novo' . ' - ' . $request['digitos'],
+            'descrição' => 'Saldo Inicial' . ' - ' . $request['digitos'],
             'valor' => $request['saldo'],
             'tipo' => 'C',
             'cartao_id' => $card->id,
