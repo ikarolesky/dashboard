@@ -30,24 +30,24 @@ Cartões
 <table class="table" id="datatable1" >
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
+                    <th>Card ID</th>
                     <th>Descrição</th>
                     <th>Valor (R$)</th>
-                    <th>Tipo</th>
                     <th>Lançado em</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($lancamentos as $lancamento)
                 <tr>
-                    <td scope="row">{{ $lancamento->id }}</td>
+                    <td>{{ $lancamento->id }}
+                    <td scope="row">{{ $lancamento->cartao_id }}</td>
                     <td>{{ $lancamento->descrição}}</td>
                     @if ($lancamento->tipo == 'D')
                     <td><font color="red">{{'-'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</font></td>
                     @else
                     <td class=""><font color="blue">{{'+'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</font></td>
                     @endif
-                    <td>{{ $lancamento->tipo }}</td>
                     <td class="text-center">{{ $lancamento->created_at->isoFormat('DD/MM/YY') }}</td>
                 </tr>
             @endforeach

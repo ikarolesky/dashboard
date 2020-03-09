@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lancamento;
 use App\Cartao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -44,6 +45,13 @@ class CartoesController extends Controller
     ]);
 
     if ( $card = Cartao::create($request->all())) {
+        Lancamento::create([
+            'descrição' => 'Novo' . ' - ' . $request['digitos'],
+            'valor' => $request['saldo'],
+            'tipo' => 'C',
+            'cartao_id' => $card->id,
+        ]);
+
         flash('Cartão adicionado.');
     } else {
         flash()->error('Não foi possível criar o cartão, verifique as informações.');

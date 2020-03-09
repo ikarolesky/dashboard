@@ -72,7 +72,7 @@ class RecargaController extends Controller
     {
 
     // Create lancamento
-    $lancamento = Recarga::create([
+        Recarga::create([
         'descrição' => $request['descricao'],
         'valor' => $request['valor'],
         'tipo' => $request['tipo'],
