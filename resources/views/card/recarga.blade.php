@@ -39,9 +39,9 @@
 <script>
 $(document).ready(function($){
 
-$('#saldo').mask("#.##0,00", {reverse: true});
-$('#saldo2').mask("#.##0,00", {reverse: true});
-$('#valor').mask("#.##0,00", {reverse: true});
+$('#saldo').mask("###000.000.000,00", {reverse: true});
+$('#saldo2').mask("#.##000.000.000,00", {reverse: true});
+$('#valor').mask("#.##000.000.000,00", {reverse: true});
 
 $('#digitos').mask("00 0000");
 $("#cardform").submit(function() {

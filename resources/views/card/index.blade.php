@@ -36,11 +36,11 @@ Cartões
                     <th>Id</th>
                     <th>Banco</th>
                     <th>6 Dígitos</th>
-                    <th>Saldo</th>
+                    <th>Saldo(R$)</th>
                     <th class="text-center">Status</th>
                     <th class="text-center">Gerenciar Saldo</th>
                     @can('edit_posts', 'delete_posts')
-                    <th class="text-center">Ações</th>
+                    <th class="text-center">Editar</th>
                     @endcan
                 </tr>
             </thead>
@@ -109,7 +109,7 @@ elems.forEach(function(html) {
 <script src="/app-assets/js/scripts/moneymask/money.mask.js"></script>
 <script>
 $(document).ready(function($){
-$('.teste').mask('000.000.000.000.000,00', {reverse: true});
+$('.teste').mask('###.000.000,00', {reverse: true});
 });
 </script>
 @endsection

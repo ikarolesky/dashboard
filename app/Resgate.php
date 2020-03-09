@@ -10,4 +10,6 @@ class Resgate extends Model
     use UsesTenantConnection;
 
     protected $table = 'lancamento';
+    protected $fillable = [
+        'descrição','valor','tipo', 'cartao_id' ];
 }

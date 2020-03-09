@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Cartao;
+use App\Resgate;
 use Illuminate\Http\Request;
 
 class ResgateController extends Controller
@@ -56,8 +58,9 @@ class ResgateController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $cards = Cartao::find($id);
+    return view('card.resgate', compact('cards'));
+        }
 
     /**
      * Update the specified resource in storage.
@@ -68,7 +71,21 @@ class ResgateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    // Create lancamento
+    $lancamento = Resgate::create([
+        'descrição' => $request['descricao'],
+        'valor' => $request['valor'],
+        'tipo' => $request['tipo'],
+        'cartao_id' => $id,
+    ]);
+    $saldo = floatval(str_replace(',', '', str_replace('.', '', $request->saldo2)));
+    $valor = floatval(str_replace(',', '', str_replace('.', '', $request->valor)));
+    $result = ((int)$saldo - (int)$valor);
+    $newsaldo = ($result);
+    $card = Cartao::find($id);
+    $card->fill(['saldo' => $newsaldo]);
+    $card->save();
+        return redirect(route('cards.index'));
     }
 
     /**
