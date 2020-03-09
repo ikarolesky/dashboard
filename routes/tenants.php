@@ -11,6 +11,7 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/', function () {
     return view('welcome'); //Rota pagina inicial
 });
+    Route::resource('lancamentos', 'LancamentosController');
     Route::resource('cards', 'CartoesController');
     Route::resource('recarga', 'RecargaController');
     Route::resource('resgate', 'ResgateController');

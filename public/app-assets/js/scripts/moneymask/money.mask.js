@@ -560,7 +560,7 @@
         var mask = options.mask || '#.##0,00',
                 defaults = {
               negativeNumber: options.negativeNumber || false,
-              prefixMoney: options.prefixMoney || '',
+              prefixMoney: options.prefixMoney || 'R$ ',
               reverse: options.reverse || true,
               maxlength:  options.maxlength || false,
               placeholder: options.placeholder || '0,00',
@@ -586,7 +586,7 @@
                   $(curField).val('');
                 else if (v) {
                   // remove previously added stuff at start of string
-                  v = v.replace(new RegExp('^-?'), '');
+                  
                   v = v.replace(new RegExp('^0*\\'+decimalSep+'?0*'), ''); //v = v.replace(/^0*,?0*/, '');
                   v = v.length == 0 ? '0'+decimalSep+'00' : (v.length == 1 ? '0'+decimalSep+'0'+v : (v.length == 2 ? '0'+decimalSep+v : v));
                   curField.val((opts.prefixMoney)+(minus?'-':'')+v).data('mask-isZero', (v=='0'+decimalSep+'00'));
@@ -688,12 +688,6 @@ $(function() {
         }
       }
     };
-
-    $('#money-field1').mask('#.##0,00', MoneyOpts);
-    
-    // Mascara para Dinheiro e Decimais (Versão da funcionalidade adicionado no corpo do plugin com opções Negativo e Prefixo)
-    $('#money-field2').maskMoney({negativeNumber: true});
-    $('#money-field3').maskMoney({prefixMoney: 'R$ '});
 });
 
 

@@ -18,7 +18,7 @@ class CreateCartaoTable extends Migration
             $table->boolean('status')->default(1);
             $table->string('digitos');
             $table->string('tipo');
-            $table->string('saldo');
+            $table->float('saldo', 10, 2);
             $table->unsignedInteger('cartao_ciclo_id')->nullable();
             $table->unsignedInteger('cartao_banco_id');
             $table->timestamps();

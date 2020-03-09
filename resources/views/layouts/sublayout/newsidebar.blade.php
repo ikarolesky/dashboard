@@ -46,6 +46,8 @@
                         </li>
                         <li><a href="{{ route('cards.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Thumb View">Novo</span></a>
                         </li>
+                        <li><a href="{{ route('lancamentos.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Thumb View">Lançamentos</span></a>
+                        </li>
                     </ul>
                 </li>
                 @endcan

@@ -61,7 +61,7 @@ Cartões
                         <h6> {{ $card->tipo}}</h6>
                     </td>
                     <td>{{ $card->digitos }}</td>
-                    <td class="teste">{{ $card->saldo }}</td>
+                    <td>{{'R$' . ' ' . number_format($card->saldo,2,",",".") }}</span></td>
                     <td class="text-center">
                     <input type="checkbox" data-id="{{ $card->id }}" name="status" class="js-switch " {{ $card->status == 1 ? 'checked' : '' }}>
                     </td>
@@ -103,13 +103,6 @@ elems.forEach(function(html) {
             }
         });
     });
-});
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/app-assets/js/scripts/moneymask/money.mask.js"></script>
-<script>
-$(document).ready(function($){
-$('.teste').mask('###.000.000,00', {reverse: true});
 });
 </script>
 @endsection

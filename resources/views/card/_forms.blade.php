@@ -44,12 +44,9 @@
 <script>
 $(document).ready(function($){
 
-$('#saldo').mask("#.##0,00", {reverse: true});
+$('#saldo').mask("#.##0.00", {reverse: true});
 
 $('#digitos').mask("00 0000");
-$("#cardform").submit(function() {
-  $("#saldo").unmask();
-});
 });
 </script>
 

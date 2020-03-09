@@ -18,15 +18,16 @@
                 <label for="digitos">Digitos</label>
                             <input id="digitos" class="form-control" type="integer" name="digitos" value="{{$cards->digitos}}" maxlength="7" disabled>
                 <label for="saldo">Saldo</label>
-                            <input id="saldo" class="form-control" type="integer" name="saldo" value="{{$cards->saldo}}" disabled>
-                <label for="recarga">Valor</label>
+                            <input id="saldo" class="form-control" type="integer" name="saldo" value="{{'R$' . ' ' . number_format($cards->saldo,2,',','.')}}" disabled>
+                <label for="recarga">Valor(R$)</label>
                             <input id="valor" class="form-control" type="integer" name="valor">
                             <input hidden id="tipo" class="form-control" type="string" name="tipo" value="C">
-                            <input hidden id="saldo2" class="form-control" type="string" name="saldo2" value="{{$cards->saldo}}">
+                            <input hidden id="saldo2" class="form-control" type="integer" name="saldo2" value="{{number_format($cards->saldo,2,',','.')}}">
                             <input hidden id="cartao_id" class="form-control" type="integer" name="cartao_id" value="{{$cards->id}}">
                 <label for="descricao">Descrição</label>
                             <input id="descricao" class="form-control" type="string" name="descricao">
         </div>
+
             <!-- Submit Form Button -->
             <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">
                 Salvar
@@ -39,16 +40,9 @@
 <script>
 $(document).ready(function($){
 
-$('#saldo').mask("###000.000.000,00", {reverse: true});
-$('#saldo2').mask("#.##000.000.000,00", {reverse: true});
-$('#valor').mask("#.##000.000.000,00", {reverse: true});
+$('#valor').mask("#.##0.00", {reverse: true});
 
 $('#digitos').mask("00 0000");
-$("#cardform").submit(function() {
-  $("#saldo").unmask();
-  $("#saldo2").unmask();
-  $("#valor").unmask();
-});
 });
 </script>
 @endsection
