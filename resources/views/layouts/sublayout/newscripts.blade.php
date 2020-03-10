@@ -7,12 +7,12 @@
 $(document).ready(function() {
     $('#datatable1').DataTable( {
         dom: 'Bfrtlip',
+        order: [[ 0, "desc" ]],
         buttons: [
             'copy',
              {
             extend: 'print',
             exportOptions: {
-                // Exporta "Agente", "Ramal" e "Almoço"
                 columns: [0, 1, 2, 3, 4]
             }
 

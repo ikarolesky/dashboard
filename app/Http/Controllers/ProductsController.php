@@ -118,7 +118,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
     $product = Product::find($id);
-    $plataform = Plataforma::all()->pluck('name', 'id');
+    $plataform = Plataforma::all('name', 'id');
     $plataformprod = Plataformaprod::find($id);
 
     return view('products.edit', compact('product', 'plataform', 'plataformprod'));    }
@@ -132,19 +132,27 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-            foreach ($request->addmore as $value)
+            Product::where('name', $request->hname)->update([
+                'name' => $request->name,
+                'url' => $request->url,
+            ]);
+            if ($request->has('addmore'))
             {
-               Plataformaprod::where('product_id', $id)
-               ->where('plataforma_id', $value['plataforma_id'])
-               ->update(
-                [
-                'product_key' => $value['product_key'],
-                'basic_authentication' => $value['basic_authentication'],
-                'codigo_produto' => $value['codigo_produto'],
-                'plataforma_id' => $value['plataforma_id'],
-                ]
-                );
+                foreach ($request->addmore as $value)
+                    {
+                       Plataformaprod::where('product_id', $id)
+                       ->where('plataforma_id', $value['plataforma_id'])
+                       ->update(
+                        [
+                        'product_key' => $value['product_key'],
+                        'basic_authentication' => $value['basic_authentication'],
+                        'codigo_produto' => $value['codigo_produto'],
+                        'plataforma_id' => $value['plataforma_id'],
+                        ]
+                        );
+                    }
             }
+
             return redirect(route('products.index'));
     }
 
@@ -156,15 +164,25 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+    }
+
+        public function delete(Request $request)
+    {
+        $plat = Plataformaprod::where('product_key', $request->product_key)
+        ->where('basic_authentication', $request->basic_authentication)
+        ->where('plataforma_id', $request->plataforma_id)
+        ->where('codigo_produto', $request->codigo_produto);
+        $plat->delete();
+        return response()->json(['message' => 'Deletado']);
     }
 
     public function updateStatus(Request $request)
-{
+    {
     $products = Product::findOrFail($request->produto_id);
     $products->is_active = $request->is_active;
     $products->save();
 
     return response()->json(['message' => 'Product status updated successfully.']);
-}
+    }
 }

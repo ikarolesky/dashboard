@@ -27,8 +27,8 @@ Produtos
             <th>Plataformas</th>
             <th>Criado em</th>
             <th>Editado em</th>
-            <th>Ativo</th>
-            <th>Editar</th>
+            <th class="text-center">Ativo</th>
+            <th class="text-center">Ações</th>
         </tr>
     </thead>
     <tbody>

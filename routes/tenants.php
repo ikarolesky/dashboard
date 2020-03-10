@@ -18,6 +18,7 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/card/update', 'CardStatusController@updateStatus')->name('card.status');
     Route::get('/status/update', 'UserStatusController@updateStatus')->name('user.status');
     Route::get('/products/update', 'ProductsController@updateStatus')->name('products.status');
+    Route::get('/products/delete', 'ProductsController@delete')->name('products.delete');
     Route::resource('products', 'ProductsController');
     Auth::routes(['register' => false]);//Rotas de login e logout sem /register
     Route::resource('users', 'UserController');//Rotas para usuarios
