@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class ProductsController extends Controller
@@ -139,18 +140,30 @@ class ProductsController extends Controller
             if ($request->has('addmore'))
             {
                 foreach ($request->addmore as $value)
-                    {
-                       Plataformaprod::where('product_id', $id)
-                       ->where('plataforma_id', $value['plataforma_id'])
-                       ->update(
-                        [
+                {
+                        Plataformaprod::create([
                         'product_key' => $value['product_key'],
                         'basic_authentication' => $value['basic_authentication'],
                         'codigo_produto' => $value['codigo_produto'],
                         'plataforma_id' => $value['plataforma_id'],
+                        'product_id' => $value['product_id'],
+                        ]);
+                }
+            }
+            elseif ($request->has('addmore1')) {
+                foreach ($request->addmore1 as $value1)
+                {
+                        Plataformaprod::where('product_id', $id)
+                       ->where('plataforma_id', $value1['plataforma_id'])
+                       ->update(
+                        [
+                        'product_key' => $value1['product_key'],
+                        'basic_authentication' => $value1['basic_authentication'],
+                        'codigo_produto' => $value1['codigo_produto'],
+                        'plataforma_id' => $value1['plataforma_id'],
                         ]
-                        );
-                    }
+                        );;
+                }
             }
 
             return redirect(route('products.index'));

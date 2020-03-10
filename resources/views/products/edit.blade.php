@@ -41,30 +41,30 @@
                 @if($b->plataforma_id == '1')
                 <tr>
                 <td>Monetizze</td>
-                <td><input type="text" name="addmore[0][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control"></td>
-                <td><input type="text" name="addmore[0][product_key]" value="{{$b->product_key}}" class="form-control" ></td>
-                <td><input type="text" name="addmore[0][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control"></td>
+                <td><input type="text" name="addmore1[0][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control"></td>
+                <td><input type="text" name="addmore1[0][product_key]" value="{{$b->product_key}}" class="form-control" ></td>
+                <td><input type="text" name="addmore1[0][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control"></td>
                 <td class="text-center"><button type="button" data-cp="{{$b->codigo_produto}}" data-ba="{{$b->basic_authentication}}" data-pk="{{$b->product_key}}" data-pi="1" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 delete-tr"><i class="feather icon-x"></i></button></td>
-                <input type="hidden" name="addmore[0][plataforma_id]" value="1">
+                <input type="hidden" name="addmore1[0][plataforma_id]" value="1">
                 </tr>
                 @endif
                 @if($b->plataforma_id == '2')
                 <tr>
                 <td>Perfect Pay</td>
-                <td><input type="text" name="addmore[1][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control" id="cp"></td>
-                <td><input type="text" name="addmore[1][product_key]" value="{{$b->product_key}}" class="form-control" id="pk"></td>
-                <td><input type="text" name="addmore[1][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control" id="ba"></td><td class="text-center"><button type="button" data-cp="{{$b->codigo_produto}}" data-ba="{{$b->basic_authentication}}" data-pk="{{$b->product_key}}" data-pi="2" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 delete-tr"><i class="feather icon-x"></i></button></td>
-                <input type="hidden" name="addmore[1][plataforma_id]" value="2" id="pi">
+                <td><input type="text" name="addmore1[1][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control" id="cp"></td>
+                <td><input type="text" name="addmore1[1][product_key]" value="{{$b->product_key}}" class="form-control" id="pk"></td>
+                <td><input type="text" name="addmore1[1][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control" id="ba"></td><td class="text-center"><button type="button" data-cp="{{$b->codigo_produto}}" data-ba="{{$b->basic_authentication}}" data-pk="{{$b->product_key}}" data-pi="2" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 delete-tr"><i class="feather icon-x"></i></button></td>
+                <input type="hidden" name="addmore1[1][plataforma_id]" value="2" id="pi">
 
                 </tr>
                 @endif
                 @if($b->plataforma_id == '3')
                 <tr>
                 <td>Braip</td>
-                <td><input type="text" name="addmore[2][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control cp" ></td>
-                <td><input type="text"  name="addmore[2][product_key]" value="{{$b->product_key}}" class="form-control" ></td>
-                <td><input type="text"  name="addmore[2][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control" ></td>
-                <input type="hidden"  name="addmore[2][plataforma_id]" value="3" >
+                <td><input type="text" name="addmore1[2][codigo_produto]" value="{{$b->codigo_produto}}" class="form-control cp" ></td>
+                <td><input type="text"  name="addmore1[2][product_key]" value="{{$b->product_key}}" class="form-control" ></td>
+                <td><input type="text"  name="addmore1[2][basic_authentication]" value="{{$b->basic_authentication}}" class="form-control" ></td>
+                <input type="hidden"  name="addmore1[2][plataforma_id]" value="3" >
                 <td class="text-center"><button type="button" data-cp="{{$b->codigo_produto}}" data-ba="{{$b->basic_authentication}}" data-pk="{{$b->product_key}}" data-pi="3" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 delete-tr"><i class="feather icon-x"></i></button></td>
                 </tr>
                 @endif
@@ -87,7 +87,7 @@
     $("#add").click(function(){
         if (i >= 2) return;
         ++i;
-        $("#dynamicTable").append('<tr><td><select id="plataforma" name="addmore['+i+'][plataforma]" class="form-control">@foreach($plataform as $plat)<option value="{{$plat->id}}">{{$plat->name}}</option>@endforeach</select></td><td><input type="text" name="addmore['+i+'][codigo_produto]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][product_key]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][basic_authentication]" class="form-control" /></td><td class="text-center"><button type="button" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 remove-tr"><i class="feather icon-minus"></i></button></td></tr>');
+        $("#dynamicTable").append('<tr><td><select id="plataforma_id" name="addmore['+i+'][plataforma_id]" class="form-control">@foreach($plataform as $plat)<option value="{{$plat->id}}">{{$plat->name}}</option>@endforeach</select></td><td><input type="hidden"  name="addmore['+i+'][product_id]" value="{{$product->id}}" ><input type="text" name="addmore['+i+'][codigo_produto]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][product_key]" class="form-control" /></td><td><input type="text" name="addmore['+i+'][basic_authentication]" class="form-control" /></td><td class="text-center"><button type="button" class="btn btn-icon btn-icon rounded-circle btn-danger mr-1 mb-1 remove-tr"><i class="feather icon-minus"></i></button></td></tr>');
     });
    $(document).on('click', '.remove-tr', function(){
     --i;
