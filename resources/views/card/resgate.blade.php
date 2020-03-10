@@ -40,9 +40,6 @@
 <script>
 $(document).ready(function($){
 
-$('#saldo2').mask("#.##0.00", {reverse: true});
-$('#valor').mask("#.##0.00", {reverse: true});
-
 $('#digitos').mask("00 0000");
 });
 </script>

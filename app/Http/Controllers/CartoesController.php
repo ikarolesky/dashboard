@@ -43,8 +43,13 @@ class CartoesController extends Controller
         'digitos' => 'required|min:6|max:7',
         'saldo' => 'required',
     ]);
-
-    if ( $card = Cartao::create($request->all())) {
+        $saldo = floatval(str_replace(',', '.', $request->saldo));
+    if ( $card = Cartao::create([
+        'digitos' => $request['digitos'],
+        'tipo' => $request['tipo'],
+        'saldo' => $saldo,
+        'cartao_banco_id' => $request['cartao_banco_id']
+    ])) {
         Lancamento::create([
             'descrição' => 'Saldo Inicial' . ' - ' . $request['digitos'],
             'valor' => $request['saldo'],

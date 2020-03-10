@@ -44,6 +44,9 @@ $(document).ready(function($){
 $('#valor').mask("#.##0.00", {reverse: true});
 
 $('#digitos').mask("00 0000");
+$("#cardform").submit(function() {
+  $("#valor").unmask();
+});
 });
 </script>
 @endsection

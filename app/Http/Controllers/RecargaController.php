@@ -78,8 +78,8 @@ class RecargaController extends Controller
         'tipo' => $request['tipo'],
         'cartao_id' => $id,
     ]);
-    $saldo = str_replace(',', '.', $request->saldo2);
-    $valor = $request->valor;
+    $saldo = str_replace(',', '.',str_replace('.', '',  $request->saldo2));
+    $valor = str_replace(',', '.', $request->valor);
     $result = ((float)$saldo + (float)$valor);
     $newsaldo = ($result);
     $card = Cartao::find($id);

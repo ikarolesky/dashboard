@@ -44,7 +44,6 @@
 <script>
 $(document).ready(function($){
 
-$('#saldo').mask("#.##0.00", {reverse: true});
 
 $('#digitos').mask("00 0000");
 });
