@@ -12,5 +12,5 @@ class Lancamento extends Model
 
     protected $table = 'lancamento';
     protected $fillable = [
-        'descrição','valor','tipo', 'cartao_id' ];
+        'descrição','valor','tipo', 'cartao_id', 'cartao_digitos' ];
 }

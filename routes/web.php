@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+    Route::resource('forms', 'FormsController');
     Route::resource('lancamentos', 'LancamentosController');
     Route::resource('recarga', 'RecargaController');
     Route::resource('resgate', 'ResgateController');

@@ -25,7 +25,7 @@ class Cartao extends Model
 		}
 		public function relatorio()
 		{
-			return $this->hasMany(Recarga::class);
+			return $this->hasMany(Lancamento::class);
 		}
 
 

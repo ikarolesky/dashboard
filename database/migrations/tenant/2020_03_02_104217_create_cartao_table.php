@@ -42,6 +42,7 @@ class CreateCartaoTable extends Migration
             $table->string('valor');
             $table->enum('tipo',['C','D']);
             $table->unsignedInteger('cartao_id');
+            $table->string('cartao_digitos');
             $table->timestamps();
         });
     }

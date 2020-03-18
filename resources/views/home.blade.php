@@ -7,6 +7,7 @@ Dashboard
                 <ol class="breadcrumb ml-1">
                   <li class="breadcrumb-item active" aria-current="page"><a href="/home">Home</a></li>
                 </ol>
+                
 @endsection
 @section('content')
 

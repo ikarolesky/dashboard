@@ -33,7 +33,8 @@ Cartões
                     <th>ID</th>
                     <th>Card ID</th>
                     <th>Descrição</th>
-                    <th>Valor (R$)</th>
+                    <th class="header">Valor (R$)</th>
+                    <th>Tipo</th>
                     <th>Lançado em</th>
                 </tr>
             </thead>
@@ -41,12 +42,13 @@ Cartões
             @foreach($lancamentos as $lancamento)
                 <tr>
                     <td>{{ $lancamento->id }}
-                    <td scope="row">{{ $lancamento->cartao_id }}</td>
+                    <td scope="row">{{ $lancamento->cartao_digitos }}</td>
                     <td>{{ $lancamento->descrição}}</td>
+                    <td>{{$lancamento->valor}}</td>
                     @if ($lancamento->tipo == 'D')
-                    <td><font color="red">{{'-'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</font></td>
+                    <td><font color="red">{{$lancamento->tipo}}</font></td>
                     @else
-                    <td class=""><font color="blue">{{'+'. ' ' . $lancamento->valor . ' ' . $lancamento->tipo }}</font></td>
+                    <td><font color="blue">{{$lancamento->tipo}}</font></td>
                     @endif
                     <td class="text-center">{{ $lancamento->created_at->isoFormat('DD/MM/YY') }}</td>
                 </tr>
@@ -59,8 +61,20 @@ Cartões
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/app-assets/js/scripts/moneymask/money.mask.js"></script>
 <script>
-$(document).ready(function($){
-$('.teste').mask('###.000.000,00', {reverse: true});
+$(document).ready(function() {
+  var $table = $("table.table");
+
+  if ($table.length > 0) {
+    var ValorTh = $("th.header:contains('Valor (R$)')");
+    var ValorColumnIndex = $(ValorTh).index();
+    var Valor_rows = $($table).find('tr');
+
+      $(Valor_rows).each(function() {
+      var $td = $(this).find('td').eq(ValorColumnIndex);
+      var formatted = Number($td.text().replace(",",".")).toLocaleString('pt-BR', {style:'currency', currency: 'BRL'});
+      $td.text(formatted);
+      });
+  }
 });
 </script>
 @endsection

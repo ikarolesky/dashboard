@@ -55,6 +55,7 @@ class CartoesController extends Controller
             'valor' => $request['saldo'],
             'tipo' => 'C',
             'cartao_id' => $card->id,
+            'cartao_digitos' => $request['digitos'],
         ]);
 
         flash('Cartão adicionado.');

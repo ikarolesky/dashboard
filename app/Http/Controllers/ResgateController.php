@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cartao;
-use App\Resgate;
+use App\Lancamento;
 use Illuminate\Http\Request;
 
 class ResgateController extends Controller
@@ -72,10 +72,11 @@ class ResgateController extends Controller
     public function update(Request $request, $id)
     {
     // Create lancamento
-    $lancamento = Resgate::create([
+    $lancamento = Lancamento::create([
         'descrição' => $request['descricao'],
         'valor' => $request['valor'],
         'tipo' => $request['tipo'],
+        'cartao_digitos' => $request['cartao_digitos'],
         'cartao_id' => $id,
     ]);
     $saldo = str_replace(',', '.',str_replace('.', '',  $request->saldo2));

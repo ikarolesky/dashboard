@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Cartao;
-use App\Lancamento;
+use App\Product;
 use Illuminate\Http\Request;
 
-class RecargaController extends Controller
+class FormsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        //
+        $products = Product::all();
+        return view('form.index' , compact('products'));
     }
 
     /**
@@ -58,8 +58,8 @@ class RecargaController extends Controller
      */
     public function edit($id)
     {
-    $cards = Cartao::find($id);
-    return view('card.recarga', compact('cards'));    }
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -70,23 +70,7 @@ class RecargaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-    // Create lancamento
-        Lancamento::create([
-        'descrição' => $request['descricao'],
-        'valor' => $request['valor'],
-        'tipo' => $request['tipo'],
-        'cartao_digitos' => $request['cartao_digitos'],
-        'cartao_id' => $id,
-    ]);
-    $saldo = str_replace(',', '.',str_replace('.', '',  $request->saldo2));
-    $valor = str_replace(',', '.', $request->valor);
-    $result = ((float)$saldo + (float)$valor);
-    $newsaldo = ($result);
-    $card = Cartao::find($id);
-    $card->fill(['saldo' => $newsaldo]);
-    $card->save();
-        return redirect(route('cards.index'));
+        //
     }
 
     /**

@@ -20,11 +20,12 @@
                 <label for="saldo">Saldo</label>
                             <input id="saldo" class="form-control" type="integer" name="saldo" value="{{'R$' . ' ' . number_format($cards->saldo,2,',','.')}}" disabled>
                 <label for="recarga">Valor(R$)</label>
-                            <input id="valor" class="form-control" type="integer" name="valor">
+                            <input id="valor" class="form-control" type="integer" name="valor" placeholder="150,00">
                             <input hidden id="tipo" class="form-control" type="string" name="tipo" value="C">
                             <input hidden id="saldo2" class="form-control" type="integer" name="saldo2" value="{{number_format($cards->saldo,2,',','.')}}">
                             <input hidden id="cartao_id" class="form-control" type="integer" name="cartao_id" value="{{$cards->id}}">
                             <input hidden id="descricao" class="form-control" type="text" name="descricao" value="Recarga - {{$cards->digitos}}">
+                            <input hidden id="cartao_digitos" class="form-control" type="text" name="cartao_digitos" value="{{$cards->digitos}}">
                 <label >Descrição</label>
                             <input class="form-control" type="string" value="Recarga - {{$cards->digitos}}" disabled>
         </div>
@@ -41,11 +42,10 @@
 <script>
 $(document).ready(function($){
 
-$('#valor').mask("#.##0.00", {reverse: true});
 
 $('#digitos').mask("00 0000");
 $("#cardform").submit(function() {
-  $("#valor").unmask();
+
 });
 });
 </script>
