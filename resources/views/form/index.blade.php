@@ -27,31 +27,45 @@ Formularios
 <div class="card">
   <div class="card-header">Novo Formulario</div>
     <div class="card">
-      <label for="produto">Selecione o Produto</label>
-      <select id="produto" name="produto" class="custom-select">
-      @foreach ($products as $product)
-      <option value="{{$product->id}}">{{$product->name}}</option>
-      @endforeach
-    </select>
       <label for="nome">Nome?</label>
       <input id="nome" type="checkbox" class="js-switch">
       <label for="email">Email?</label>
       <input id="email" type="checkbox" class="js-switch1">
       <label for="telefone">Telefone?</label>
       <input id="telefone" type="checkbox" class="js-switch2">
+      <label for="select">Selecionar?</label>
+      <input id="select" type="checkbox" class="js-switch3">
+<form action="{{ Request::url() . '/store' }}" method="post">
+<label for="produto">Selecione o Produto</label>
+      <select id="produto" name="produto" class="custom-select col-md-6">
+      @foreach ($products as $product)
+      <option value="{{$product->id}}">{{$product->name}}</option>
+      @endforeach
+    </select>
 
     </div>
     <div class="card">
       <div class="card-header">Prévia do Formulário</div>
+
     <div class="card-body">
-      <form action="Request::url() . '/post'" method="post" id="new-form">
-        <input type="hidden" name="user_id" value="Auth::User()->id">
+        @csrf
+        <input type="hidden" name="user_id" value="{{Auth::User()->id}}" id="new-form">
+
     </div>
+
   </div>
+                              <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">
+                                    Adicionar
+                                </button>
+                            </div>
+                        </div>
 </div>
 <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 let elems1 = Array.prototype.slice.call(document.querySelectorAll('.js-switch1'));
 let elems2 = Array.prototype.slice.call(document.querySelectorAll('.js-switch2'));
+let elems3 = Array.prototype.slice.call(document.querySelectorAll('.js-switch3'));
 
 elems.forEach(function(html) {
     let switchery = new Switchery(html,  { size: 'small', color: '#7367F0', secondaryColor    : '#e2e2e2' });
@@ -60,6 +74,9 @@ elems1.forEach(function(html) {
     let switchery = new Switchery(html,  { size: 'small', color: '#7367F0', secondaryColor    : '#e2e2e2' });
 });
 elems2.forEach(function(html) {
+    let switchery = new Switchery(html,  { size: 'small', color: '#7367F0', secondaryColor    : '#e2e2e2' });
+});
+elems3.forEach(function(html) {
     let switchery = new Switchery(html,  { size: 'small', color: '#7367F0', secondaryColor    : '#e2e2e2' });
 });
 
@@ -89,6 +106,21 @@ elems2.forEach(function(html) {
       let status = $(this).prop('checked') === true ? 1 : 0;
         if (status == 1){
           $("#new-form").append('<label for="telefone">Telefone</label><br><input id="telefone" type="telefone" name="telefone" class="form-group"><br>');
+        }
+        if (status == 0){
+         $(this).parents('input').remove();
+         $(this).parents('label').remove();
+        }
+    });
+
+    $('.js-switch3').change(function (){
+      let status = $(this).prop('checked') === true ? 1 : 0;
+      debugger;
+        if (status == 1){
+          let opt1 = window.prompt('Digite o texto desejado para a primeira opção!');
+          let opt2 = window.prompt('Digite o texto desejado para a segunda opção!');
+          let opt3 = window.prompt('Digite o texto desejado para a terceira opção!');
+          $("#new-form").append('<label for="select">Selecione</label><br><select id="select" class="form-group custom-select"><option value="'+ opt1 +'">' + opt1 +'</option><option value="'+ opt2 +'">' + opt2 +'</option><option value="'+ opt3 +'">' + opt3 +'</option><br>');
         }
         if (status == 0){
          $(this).parents('input').remove();

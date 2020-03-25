@@ -12,6 +12,7 @@ Route::middleware(['tenancy.enforce','web'])
     return view('welcome'); //Rota pagina inicial
 });
     Route::resource('forms', 'FormsController');
+     Route::post('forms/store', 'FormsController@store');
     Route::resource('lancamentos', 'LancamentosController');
     Route::resource('cards', 'CartoesController');
     Route::resource('recarga', 'RecargaController');
