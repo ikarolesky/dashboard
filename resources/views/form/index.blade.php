@@ -24,6 +24,7 @@ Formularios
          {!! \Session::get('danger') !!}
     </div>
 @endif
+<form action="{{ Request::url() . '/store' }}" method="post">
 <div class="card">
   <div class="card-header">Novo Formulario</div>
     <div class="card">
@@ -35,7 +36,7 @@ Formularios
       <input id="telefone" type="checkbox" class="js-switch2">
       <label for="select">Selecionar?</label>
       <input id="select" type="checkbox" class="js-switch3">
-<form action="{{ Request::url() . '/store' }}" method="post">
+
 <label for="produto">Selecione o Produto</label>
       <select id="produto" name="produto" class="custom-select col-md-6">
       @foreach ($products as $product)
@@ -47,8 +48,7 @@ Formularios
     <div class="card">
       <div class="card-header">Prévia do Formulário</div>
 
-    <div class="card-body">
-        @csrf
+    <div class="card-body" id="new-form">
         <input type="hidden" name="user_id" value="{{Auth::User()->id}}" id="new-form">
 
     </div>
@@ -62,6 +62,7 @@ Formularios
                             </div>
                         </div>
 </div>
+
 <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 let elems1 = Array.prototype.slice.call(document.querySelectorAll('.js-switch1'));
 let elems2 = Array.prototype.slice.call(document.querySelectorAll('.js-switch2'));
