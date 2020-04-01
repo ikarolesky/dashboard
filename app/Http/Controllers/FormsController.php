@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Form;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -14,8 +15,8 @@ class FormsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('form.index' , compact('products'));
+        $forms = Form::all();
+        return view('form.index' , compact('forms'));
     }
 
     /**
@@ -25,7 +26,8 @@ class FormsController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        return view('form.create' , compact('products'));
     }
 
     /**
@@ -36,7 +38,14 @@ class FormsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request)->all();
+        $form = Form::create([
+            'nome_form' => $request['nome_form'],
+            'conteudo1' => $request['conteudo1'],
+            'conteudo2' => $request['conteudo2'],
+            'conteudo3' => $request['conteudo3'],
+            'conteudo4' => $request['conteudo4'],
+            'url' => $request['url'],
+        ]);
     }
 
     /**
@@ -82,5 +91,12 @@ class FormsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function subs(Request $request)
+    {
+
+
+                return redirect()->away($url);
     }
 }
