@@ -1,4 +1,5 @@
-01/04/2020
+---------------------- /* 01/04/2020 */ -------------------------
+
 Script do formbuilder terminado.
 Adionada página para display do código.
 Criados métodos pernitentes aos formulários.
@@ -6,3 +7,5 @@ TODO:Encryptar user_id, form_id no código gerado.
 Criar método sub no FormsController.
 Testar o método SUB.
 Corrigir páginas CARD.
+
+-----------------------------------------------------------------
