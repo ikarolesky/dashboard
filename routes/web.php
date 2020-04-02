@@ -11,7 +11,7 @@
 |
 */
     Route::resource('forms', 'FormsController');
-    Route::post('forms/store', 'FormsController@store');
+    Route::post('forms/sub', 'FormsController@sub');
     Route::resource('lancamentos', 'LancamentosController');
     Route::resource('recarga', 'RecargaController');
     Route::resource('resgate', 'ResgateController');

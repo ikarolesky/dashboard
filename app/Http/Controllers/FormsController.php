@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Form;
+use App\FormSub;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -45,6 +46,7 @@ class FormsController extends Controller
             'conteudo3' => $request['conteudo3'],
             'conteudo4' => $request['conteudo4'],
             'url' => $request['url'],
+            'produto' => $request['produto'],
         ]);
     }
 
@@ -93,9 +95,17 @@ class FormsController extends Controller
         //
     }
 
-    public function subs(Request $request)
+    public function sub(Request $request)
     {
-
+            $url = $request->url;
+            FormSub::create([
+                'forms_id' => $request['form_id'],
+                'nome' => $request['nome'],
+                'email' => $request['email'],
+                'telefone' => $request['telefone'],
+                'selecione' => $request['selecione'],
+                'user_id' => $request['user_id'],
+            ]);
 
                 return redirect()->away($url);
     }

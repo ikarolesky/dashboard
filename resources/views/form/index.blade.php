@@ -40,7 +40,7 @@ Formulários
     @foreach($forms as $item)
         <tr>
             <td>{{ $item->nome_form }}</td>
-            <td>Produto</td>  
+            <td>{{$item->produto}}</td>  
             <td>{{ $item->url }}</td>
             <td class="text-center">
 <button type="button" class="btn btn-outline-primary btn-lg block" data-toggle="modal" data-target="#xlarge">

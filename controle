@@ -6,3 +6,9 @@ TODO:Encryptar user_id, form_id no código gerado.
 Criar método sub no FormsController.
 Testar o método SUB.
 Corrigir páginas CARD.
+02/04/2020
+Metodo sub criado.
+Metodo SUB testado.
+Removido csrf do form.
+TODO: Implementar o script para hash e unhash
+Corrigir páginas CARD.
