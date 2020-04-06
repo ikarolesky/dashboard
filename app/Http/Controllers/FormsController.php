@@ -6,9 +6,11 @@ use App\Product;
 use App\Form;
 use App\FormSub;
 use Illuminate\Http\Request;
+use Auth;
+use Crypt;
 
 class FormsController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      *
@@ -47,6 +49,7 @@ class FormsController extends Controller
             'conteudo4' => $request['conteudo4'],
             'url' => $request['url'],
             'produto' => $request['produto'],
+            'user_id' => Auth::user()->id,
         ]);
     }
 
@@ -97,14 +100,15 @@ class FormsController extends Controller
 
     public function sub(Request $request)
     {
+            $form_id = Crypt::decrypt($request->form_id);
+            $user_id = Crypt::decrypt($request->user_id);
             $url = $request->url;
             FormSub::create([
-                'forms_id' => $request['form_id'],
+                'forms_id' => $form_id,
                 'nome' => $request['nome'],
                 'email' => $request['email'],
                 'telefone' => $request['telefone'],
                 'selecione' => $request['selecione'],
-                'user_id' => $request['user_id'],
             ]);
 
                 return redirect()->away($url);

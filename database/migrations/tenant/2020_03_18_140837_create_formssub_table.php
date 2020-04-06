@@ -20,7 +20,6 @@ class CreateFormssubTable extends Migration
             $table->string('email')->nullable();
             $table->string('telefone')->nullable();
             $table->string('selecione')->nullable();
-            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
 
@@ -33,6 +32,7 @@ class CreateFormssubTable extends Migration
             $table->string('conteudo4');
             $table->string('url');
             $table->string('produto');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

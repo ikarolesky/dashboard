@@ -61,7 +61,7 @@ Formulários
 <div class="modal-body">
                     <pre><code>
 
-                      <p>{{'<form action="'}}{{Request::url() . '/sub'}}{{'" method="post">'}}</p><p>{{'<input type="hidden" value="'}}{{Auth::user()->id}}{{'" name="user_id" id="user_id" class="form-group">'}}</p><p>{{$item->conteudo1}}</p><p>{{$item->conteudo2}}</p><p>{{$item->conteudo3}}<p><p>{{'<input type="hidden" value="'}}{{$item->url}}{{'" name="url" id="url" class="form-group">'}}</p><p>{{'<input type="hidden" value="'}}{{$item->id}}{{'" name="form_id" id="form_id" class="form-group">'}}</p>{{$item->conteudo4}}</p><p>{{'<button type="submit" class="btn btn-primary">Enviar</button>'}}</p>
+                      <p>{{'<form action="'}}{{Request::url() . '/sub'}}{{'" method="post">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->user_id)}}{{'" name="user_id" id="user_id" class="form-group">'}}</p><p>{{$item->conteudo1}}</p><p>{{$item->conteudo2}}</p><p>{{$item->conteudo3}}<p><p>{{'<input type="hidden" value="'}}{{$item->url}}{{'" name="url" id="url" class="form-group">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->id)}}{{'" name="form_id" id="form_id" class="form-group">'}}</p>{{$item->conteudo4}}</p><p>{{'<button type="submit" class="btn btn-primary">Enviar</button>'}}</p>
                     </pre></code>
                     </p>
                   </div>
