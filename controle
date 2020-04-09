@@ -28,3 +28,27 @@ TODO: Corrigir páginas CARD.
 =======
 
 -----------------------------------------------------------------
+
+---------------------- /* 06/04/2020 */ -------------------------
+Forms_id e user_id encryptados no blade e decryptados no controller.
+TODO: Corrigir páginas CARD.
+=======
+
+-----------------------------------------------------------------
+
+---------------------- /* 09/04/2020 */ -------------------------
+Página Leads criada.
+FormSubs separados por Nome do Form.
+Botão Copy adicioando para copiar código.
+Botão Copy adicioando para copiar head.
+Botão Copy adicioando para copiar body.
+Páginas CARD completamente corrigidas.
+Mensagem Whatsapp adicionado à criação de forms.
+TODO: Criar página para edição de leads com:
+Lead atendido, atender, em atendimento
+Transferir botão de envio Whatsapp para esta página
+Acrescentar campos no formssub Observação e Status
+=======
+
+-----------------------------------------------------------------
+

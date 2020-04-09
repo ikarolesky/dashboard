@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Form;
-use App\FormSub;
 use Illuminate\Http\Request;
-use Auth;
-use Crypt;
+use App\FormSub;
+use App\Form;
 
-class FormsController extends Controller
-{   
+class LeadsController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +16,8 @@ class FormsController extends Controller
     public function index()
     {
         $forms = Form::all();
-        return view('form.index' , compact('forms'));
+        $leads = FormSub::all();
+        return view('form.leads' , compact('leads', 'forms'));
     }
 
     /**
@@ -29,8 +27,7 @@ class FormsController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        return view('form.create' , compact('products'));
+        //
     }
 
     /**
@@ -41,18 +38,7 @@ class FormsController extends Controller
      */
     public function store(Request $request)
     {
-        $form = Form::create([
-            'nome_form' => $request['nome_form'],
-            'conteudo1' => $request['conteudo1'],
-            'conteudo2' => $request['conteudo2'],
-            'conteudo3' => $request['conteudo3'],
-            'conteudo4' => $request['conteudo4'],
-            'url' => $request['url'],
-            'produto' => $request['produto'],
-            'whatsapp' => $request['whatsapp'],
-            'user_id' => Auth::user()->id,
-        ]);
-        return redirect('forms');
+        //
     }
 
     /**
@@ -98,27 +84,5 @@ class FormsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function sub(Request $request)
-    {
-            $form_id = Crypt::decrypt($request->form_id);
-            $user_id = Crypt::decrypt($request->user_id);
-            $url = $request->url;
-            FormSub::create([
-                'forms_id' => $form_id,
-                'nome' => $request['nome'],
-                'email' => $request['email'],
-                'telefone' => $request['telefone'],
-                'selecione' => $request['selecione'],
-            ]);
-
-                return redirect()->away($url);
-    }
-
-    public function leads()
-    {
-        $leads = FormsSub::all();
-        return view('form.leads' , compact('leads'));
     }
 }

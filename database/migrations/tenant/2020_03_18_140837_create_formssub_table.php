@@ -34,6 +34,7 @@ class CreateFormssubTable extends Migration
             $table->string('produto');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+            $table->string('whatsapp');
         });
     }
 

@@ -19,47 +19,11 @@
                             <input id="digitos" class="form-control" type="integer" name="digitos" value="{{$cards->digitos}}" maxlength="7">
                 <label for="cartao_banco_id">Banco</label>
                             <select id="cartao_banco_id" name="cartao_banco_id" type="cartao_banco_id" required class="custom-select">
-                            @if ($cards->cartao_banco_id == '1')
-                            <option value="{{$cards->cartao_banco_id}}">
-                            @if ($cards->cartao_banco_id == '1')
-                            PagCorp
-                            @endif
-                            @if($cards->cartao_banco_id == '2')
-                            PayPal
-                            @endif
-                            @if($cards->cartao_banco_id == '3')
-                            Nubank
-                            @endif</option>
-                            <option value="2">PayPal</option>
-                            <option value="3">NuBank</option>
-                            @endif
-                            @if ($cards->cartao_banco_id == '2')
-                            <option value="{{$cards->cartao_banco_id}}">
-                            @if ($cards->cartao_banco_id == '1')
-                            PagCorp
-                            @endif
-                            @if($cards->cartao_banco_id == '2')
-                            PayPal
-                            @endif
-                            @if($cards->cartao_banco_id == '3')
-                            Nubank
-                            @endif</option>
-                            <option value="1">PagCorp</option>
-                            <option value="3">NuBank</option>
-                            @endif
-                            @if ($cards->cartao_banco_id == '3')
-                            <option value="{{$cards->cartao_banco_id}}">@if ($cards->cartao_banco_id == '1')
-                            PagCorp
-                            @endif
-                            @if($cards->cartao_banco_id == '2')
-                            PayPal
-                            @endif
-                            @if($cards->cartao_banco_id == '3')
-                            Nubank
-                            @endif</option>
-                            <option value="2">PayPal</option>
-                            <option value="1">PagCorp</option>
-                            @endif
+                                @foreach($bancos as $banco)
+                                <option value="{{$banco->id}}">
+                                 {{$banco->nome}}
+                                </option>
+                                @endforeach
                         </select>
                 </label>
                 <label for="tipo">Tipo</label>

@@ -33,6 +33,7 @@ Formulários
             <th>Nome do Formulário</th>
             <th>Produto</th>
             <th>URL de Retorno</th>
+            <th>Criado em </th>
             <th class="text-center">Código</th>
         </tr>
     </thead>
@@ -42,13 +43,14 @@ Formulários
             <td>{{ $item->nome_form }}</td>
             <td>{{$item->produto}}</td>  
             <td>{{ $item->url }}</td>
+            <td>{{ $item->created_at->isoFormat('DD/MM/YY') }}</td>
             <td class="text-center">
-<button type="button" class="btn btn-outline-primary btn-lg block" data-toggle="modal" data-target="#xlarge">
+<button type="button" class="btn btn-outline-primary btn-lg block" data-toggle="modal" data-target="#{{'f' . $item->id}}">
 
               Código do formulário
             </button>
 
-                 <div class="modal fade text-left" id="xlarge" tabindex="-1" role="dialog"
+                 <div class="modal fade text-left" id="{{'f' . $item->id}}" tabindex="-1" role="dialog"
                     aria-labelledby="myModalLabel16" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
                       <div class="modal-content">
@@ -59,14 +61,28 @@ Formulários
                           </button>
                         </div>
 <div class="modal-body">
-                    <pre><code>
-
-                      <p>{{'<form action="'}}{{Request::url() . '/sub'}}{{'" method="post">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->user_id)}}{{'" name="user_id" id="user_id" class="form-group">'}}</p><p>{{$item->conteudo1}}</p><p>{{$item->conteudo2}}</p><p>{{$item->conteudo3}}<p><p>{{'<input type="hidden" value="'}}{{$item->url}}{{'" name="url" id="url" class="form-group">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->id)}}{{'" name="form_id" id="form_id" class="form-group">'}}</p>{{$item->conteudo4}}</p><p>{{'<button type="submit" class="btn btn-primary">Enviar</button>'}}</p>
-                    </pre></code>
+                      Cole na tag <h6>head</h6> da sua página:
+                        <pre><code id="copyhead">
+{{'<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://kings7.digital/app-assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://kings7.digital/app-assets/css/bootstrap-extended.min.css">' }}
+</code></pre>
+                      Cole no final da tag <h6>body</h6> da sua pagina:
+                      <pre><code id="copybody">
+{{'<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="https://assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>
+<script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>'}}
+</code></pre>
+                    Formulário
+                    <pre><code id="copycode"><p>{{'<form action="'}}{{Request::url() . '/sub'}}{{'" method="post">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->user_id)}}{{'" name="user_id" id="user_id" class="form-group">'}}</p><p>{{$item->conteudo1 . '<br>'}}</p><p>{{$item->conteudo2 . '<br>'}}</p><p>{{$item->conteudo3 . '<br>'}}<p><p>{{'<input type="hidden" value="'}}{{$item->url}}{{'" name="url" id="url" class="form-group">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->id)}}{{'" name="form_id" id="form_id" class="form-group">'}}</p>{{$item->conteudo4}}</p><p>{{'<p></p>' . '<button type="submit" class="btn btn-primary">Enviar</button>'}}</p>
+                    </code></pre>
                     </p>
                   </div>
                   <div class="modal-footer">
-                    Copie o código acima e cole no site desejado!
+                    <button class="btn btn-primary mr-1 mb-1 waves-effect waves-light" onclick="copyToClipboard1('copyhead')">Copiar head!</button>
+                    <button class="btn btn-primary mr-1 mb-1 waves-effect waves-light" onclick="copyToClipboard2('copybody')">Copiar body!</button>
+                    <button class="btn btn-primary mr-1 mb-1 waves-effect waves-light" onclick="copyToClipboard('copycode')">Copiar formulário!</button>
                   </div>
                       </div>
             </td>
@@ -76,7 +92,8 @@ Formulários
 </table>
 </div>
 </div>
-
-
+<script src="/app-assets/js/scripts/formbuilder/copy.js"></script>
 @endsection
+
+
 

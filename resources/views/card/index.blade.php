@@ -47,17 +47,11 @@ Cartões
             <tbody>
             @foreach($cards as $card)
                 <tr>
-                    <td scope="row">{{ $card->id }}</td>
+                    <td scope="row">{{ $card->id }}</td>a
                     <td>
-                        @if ($card->cartao_banco_id == '1')
-                        <p>PagCorp</p>
-                        @endif
-                        @if($card->cartao_banco_id == '2')
-                        <p>PayPal</p>
-                        @endif
-                        @if($card->cartao_banco_id == '3')
-                        <p>NuBank</p>
-                        @endif
+                    @if (in_array($card->cartao_banco_id, $bancos->pluck('id')->toArray()))
+                    {{$bancos->where('id', $card->cartao_banco_id)->first()->nome}}
+                    @endif
                         <h6> {{ $card->tipo}}</h6>
                     </td>
                     <td>{{ $card->digitos }}</td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lancamento;
 use App\Cartao;
+use App\CartaoBanco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,8 @@ class CartoesController extends Controller
     public function index()
     {
     $cards = Cartao::all();
-    return view('card.index', compact('cards'));
+    $bancos = CartaoBanco::all();
+    return view('card.index', compact('cards', 'bancos'));
     }
 
     /**
@@ -27,7 +29,8 @@ class CartoesController extends Controller
      */
     public function create()
     {
-    return view('card.add');
+        $bancos = CartaoBanco::all();
+    return view('card.add', compact('bancos'));
     }
 
     /**
@@ -86,7 +89,8 @@ class CartoesController extends Controller
     public function edit($id)
     {
     $cards = Cartao::find($id);
-    return view('card.edit', compact('cards'));
+    $bancos = CartaoBanco::all();
+    return view('card.edit', compact('cards','bancos'));
     }
 
     /**

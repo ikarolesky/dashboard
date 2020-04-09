@@ -8,11 +8,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['tenancy.enforce','web'])
 ->namespace('App\Http\Controllers')->group(function(){ //Isso libera as rotas à funcionarem com os controllers
     Route::get('/home', 'HomeController@index')->name('home');//Rota /home
+    Route::post('forms/sub', 'FormsController@sub');
     Route::get('/', function () {
     return view('welcome'); //Rota pagina inicial
 });
+    Auth::routes(['register' => false]);//Rotas de login e logout sem /register
+
+
+});
+
+Route::middleware(['tenancy.enforce','web', 'auth'])
+->namespace('App\Http\Controllers')->group(function(){ //Isso libera as rotas à funcionarem com os controllers
     Route::resource('forms', 'FormsController');
-     Route::post('forms/sub', 'FormsController@sub');
+
+    Route::resource('leads', 'LeadsController');
     Route::resource('lancamentos', 'LancamentosController');
     Route::resource('cards', 'CartoesController');
     Route::resource('recarga', 'RecargaController');
@@ -22,7 +31,6 @@ Route::middleware(['tenancy.enforce','web'])
     Route::get('/products/update', 'ProductsController@updateStatus')->name('products.status');
     Route::get('/products/delete', 'ProductsController@delete')->name('products.delete');
     Route::resource('products', 'ProductsController');
-    Auth::routes(['register' => false]);//Rotas de login e logout sem /register
     Route::resource('users', 'UserController');//Rotas para usuarios
     Route::resource('posts', 'PostController');//Rotas para posts
     Route::get('user/add', 'CreateUserForTenantController@index')->name('create');//Rotas para criação de usuário /Get

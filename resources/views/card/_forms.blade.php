@@ -3,9 +3,9 @@
 	<label for="cartao_banco_id">Banco</label>
 		<select id="cartao_banco_id" name="cartao_banco_id" type="cartao_banco_id" required class="custom-select">
 			<option>Selecione</option>
-			<option value="1">PagCorp</option>
-			<option value="2">PayPal</option>
-			<option value="3">NuBank</option>
+			@foreach ($bancos as $banco)
+			<option value="{{$banco->id}}">{{$banco->nome}}</option>
+			@endforeach
 		</select>
 </div>
 

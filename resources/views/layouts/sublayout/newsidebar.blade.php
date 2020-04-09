@@ -50,6 +50,18 @@
                         </li>
                     </ul>
                 </li>
+                <li class=" navigation-header"><span>Leads</span>
+                </li>
+                <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Data List">Formulários</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('forms.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List View">Todos os formulários</span></a>
+                        </li>
+                        <li><a href="{{ route('forms.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Thumb View">Novo</span></a>
+                        </li>
+                        <li><a href="{{ route('leads.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Thumb View">Leads</span></a>
+                        </li>
+                    </ul>
+                </li>
                 @endcan
                 </li>
             </ul>

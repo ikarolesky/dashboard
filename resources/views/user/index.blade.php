@@ -89,9 +89,6 @@ elems.forEach(function(html) {
             dataType: "json",
             url: '{{ route('user.status') }}',
             data: {'status': status, 'user_id': userId},
-            success: function (data) {
-                console.log(data.message);
-            }
         });
     });
 });

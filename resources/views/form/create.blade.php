@@ -44,6 +44,8 @@ Formularios
 <br>
       <label for="url">URL para redirecionamento</label>
       <input id="url" name="url" type="text" class="col-md-6 form-group"><br>
+      <label for="whatsapp">Mensagem do WhatsApp</label>
+      <input id="whatsapp" name="whatsapp" type="text" class="col-md-6 form-group"><br>
       <label for="nome">Nome?</label>
       <input id="nome" type="checkbox" class="js-switch">
       <label for="email">Email?</label>
