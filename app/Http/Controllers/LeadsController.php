@@ -17,7 +17,7 @@ class LeadsController extends Controller
     {
         $forms = Form::all();
         $leads = FormSub::all();
-        return view('form.leads' , compact('leads', 'forms'));
+        return view('leads.index' , compact('leads', 'forms'));
     }
 
     /**
@@ -60,7 +60,9 @@ class LeadsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $forms = Form::all();
+        $leads = FormSub::find($id);
+        return view('leads.edit', compact('forms', 'leads'));
     }
 
     /**
@@ -72,7 +74,12 @@ class LeadsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        FormSub::where('id', $id)->update([
+                'status' => $request->status,
+                'observacao' => $request->observacao,
+            ]);
+
+            return redirect(route('leads.index'));
     }
 
     /**

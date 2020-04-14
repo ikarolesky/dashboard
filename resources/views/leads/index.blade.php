@@ -33,7 +33,8 @@ Leads
             <th>Nome</th>
             <th>Telefone</th>
             <th>Nome do Formulário</th>
-            <th>WhatsApp</th>
+            <th>Status</th>
+            <th>Editar</th>
         </tr>
     </thead>
     <tbody>
@@ -41,14 +42,21 @@ Leads
         <tr>
             <td>{{$lead->nome}}</td>
             <td>{{$lead->telefone}}</td>
+            @if ($lead->status == 'Atender')
+                    <td><font color="red">{{$lead->status}}</font></td>
+            @else
+                    <td><font color="green">{{$lead->status}}</font></td>
+            @endif
             <td>@if(in_array($lead->forms_id, $forms->pluck('id')->toArray()))
                     {{$forms->where('id', $lead->forms_id)->first()->nome_form}}
                 @endif
             </td>
-            @if(in_array($lead->forms_id, $forms->pluck('id')->toArray()))
-            <td><a href="{{ 'https://api.whatsapp.com/send?phone=55' . $lead->telefone . '&text=' . $forms->where('id', $lead->forms_id)->first()->whatsapp  }}" class="btn btn-icon btn-icon rounded-circle btn-warning mr-1 mb-1">
-            @endif
-       <i class="feather icon-edit"></i></a>
+            <td>
+            @include('leads._actions', [
+                    'entity' => 'leads',
+                    'id' => $lead->id
+                ])
+            </td>
         </tr>
           @endforeach
     </tbody>

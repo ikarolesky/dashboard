@@ -20,6 +20,8 @@ class CreateFormssubTable extends Migration
             $table->string('email')->nullable();
             $table->string('telefone')->nullable();
             $table->string('selecione')->nullable();
+            $table->string('observacao')->nullable();
+            $table->string('status')->default('Atender');
             $table->timestamps();
         });
 
