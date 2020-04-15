@@ -41,14 +41,8 @@ Produtos
                 $plataformas = App\Product::find($item->id)->plataforms
                 ?>
                 @foreach ($plataformas as $plat)
-                @if ($plat->plataforma_id == '1')
-                <p>Monetizze</p>
-                @endif
-                @if($plat->plataforma_id == '2')
-                <p>PerfectPay</p>
-                @endif
-                @if($plat->plataforma_id == '3')
-                <p>Braip</p>
+                @if(in_array($plat->plataforma_id, $plats->pluck('id')->toArray()))
+                    <p>{{$plats->where('id', $plat->plataforma_id)->first()->name}}</p>
                 @endif
                 @endforeach
             </td>
