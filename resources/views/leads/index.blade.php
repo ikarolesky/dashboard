@@ -14,6 +14,7 @@ Leads
                 </ol>
 @endsection
 @section('content')
+
 @if (\Session::has('success'))
     <div class="alert alert-success" align="center" row="8">
         {!! \Session::get('success') !!}
@@ -42,15 +43,15 @@ Leads
         <tr>
             <td>{{$lead->nome}}</td>
             <td>{{$lead->telefone}}</td>
+            <td>@if(in_array($lead->forms_id, $forms->pluck('id')->toArray()))
+                    {{$forms->where('id', $lead->forms_id)->first()->nome_form}}
+                @endif
+            </td>
             @if ($lead->status == 'Atender')
                     <td><font color="red">{{$lead->status}}</font></td>
             @else
                     <td><font color="green">{{$lead->status}}</font></td>
             @endif
-            <td>@if(in_array($lead->forms_id, $forms->pluck('id')->toArray()))
-                    {{$forms->where('id', $lead->forms_id)->first()->nome_form}}
-                @endif
-            </td>
             <td>
             @include('leads._actions', [
                     'entity' => 'leads',

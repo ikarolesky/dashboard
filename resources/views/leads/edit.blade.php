@@ -26,7 +26,7 @@
     		<td>{{$leads->nome}}</td>
     		<td>{{$leads->telefone}}</td>
     		@if(in_array($leads->forms_id, $forms->pluck('id')->toArray()))
-            <td><a href="{{ 'https://api.whatsapp.com/send?phone=55' . $leads->telefone . '&text=' . $forms->where('id', $leads->forms_id)->first()->whatsapp  }}" class="btn btn-icon btn-icon rounded-circle btn-success mr-1 mb-1"><i class="feather icon-message-circle"></i></a>
+            <td><a target="_blank" href="{{ 'https://api.whatsapp.com/send?phone=55' . $leads->telefone . '&text=' . $forms->where('id', $leads->forms_id)->first()->whatsapp  }}" class="btn btn-icon btn-icon rounded-circle btn-success mr-1 mb-1"><i class="feather icon-message-circle"></i></a>
             @endif</td>
 
     	</tr>

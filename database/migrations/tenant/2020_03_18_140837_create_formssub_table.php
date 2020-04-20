@@ -28,10 +28,13 @@ class CreateFormssubTable extends Migration
         Schema::create('forms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome_form');
-            $table->text('conteudo1');
-            $table->text('conteudo2');
-            $table->text('conteudo3');
-            $table->text('conteudo4');
+            $table->text('conteudo1')->nullable();
+            $table->text('conteudo2')->nullable();
+            $table->text('conteudo3')->nullable();
+            $table->text('conteudo4')->nullable();
+            $table->text('conteudo5')->nullable();
+            $table->text('conteudo6')->nullable();
+            $table->text('conteudo7')->nullable();
             $table->string('url');
             $table->string('produto');
             $table->unsignedInteger('user_id');

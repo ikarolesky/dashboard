@@ -14,6 +14,9 @@ Formulários
                 </ol>
 @endsection
 @section('content')
+@can('add_posts')
+<a href="{{ route('forms.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Novo Formulário</a>
+@endcan
 @if (\Session::has('success'))
     <div class="alert alert-success" align="center" row="8">
         {!! \Session::get('success') !!}
@@ -27,7 +30,7 @@ Formulários
 <div class="card">
 <div table="responsive">
 <div class="table-responsive">
-<table class="table " id="datatable1">
+<table class="table zero-configuration">
     <thead>
         <tr>
             <th>Nome do Formulário</th>
@@ -75,7 +78,7 @@ Formulários
 <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>'}}
 </code></pre>
                     Formulário
-                    <pre><code id="copycode"><p>{{'<form action="'}}{{Request::url() . '/sub'}}{{'" method="post">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->user_id)}}{{'" name="user_id" id="user_id" class="form-group">'}}</p><p>{{$item->conteudo1 . '<br>'}}</p><p>{{$item->conteudo2 . '<br>'}}</p><p>{{$item->conteudo3 . '<br>'}}<p><p>{{'<input type="hidden" value="'}}{{$item->url}}{{'" name="url" id="url" class="form-group">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->id)}}{{'" name="form_id" id="form_id" class="form-group">'}}</p>{{$item->conteudo4}}</p><p>{{'<p></p>' . '<button type="submit" class="btn btn-primary">Enviar</button>'}}</p>
+                    <pre><code id="copycode"><p>{{'<form action="'}}{{Request::url() . '/sub'}}{{'" method="post">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->user_id)}}{{'" name="user_id" id="user_id" class="form-group">'}}</p><p>{{$item->conteudo1 . '<br>'}}</p><p>{{$item->conteudo2 . '<br>'}}</p><p>{{$item->conteudo3 . '<br>'}}<p><p>{{'<input type="hidden" value="'}}{{$item->url}}{{'" name="url" id="url" class="form-group">'}}</p><p>{{'<input type="hidden" value="'}}{{Crypt::encrypt($item->id)}}{{'" name="form_id" id="form_id" class="form-group">'}}</p>{{$item->conteudo4}}{{$item->conteudo5}}{{$item->conteudo6}}{{$item->conteudo7}}{{'</select>'}}</p></p><p>{{'<p></p>' . '<button type="submit" class="btn btn-primary">Enviar</button>'}}</p>
                     </code></pre>
                     </p>
                   </div>

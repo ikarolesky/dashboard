@@ -54,6 +54,12 @@ Formularios
       <input id="telefone" type="checkbox" class="js-switch2">
       <label for="select">Selecionar?</label>
       <input id="select" type="checkbox" class="js-switch3">
+      <label for="select">Opção 1</label>
+      <input id="select" type="checkbox" class="js-switch4">
+      <label for="select">Opção 2</label>
+      <input id="select" type="checkbox" class="js-switch5">
+      <label for="select">Opção 3</label>
+      <input id="select" type="checkbox" class="js-switch6">
 </div>
 <div class="col-lg-3 col-md-6 col-12">
 </div>
@@ -69,7 +75,7 @@ Formularios
                         </div>
     </div>
     <div class="card">
-      <div class="card-header">Prévia do Formulário</div>
+      <div class="card-header"></div>
 
     <div class="card-body" id="new-form">
         <input type="hidden" name="user_id" value="{{Auth::User()->id}}" id="new-form">
