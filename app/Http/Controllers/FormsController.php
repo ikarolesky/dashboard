@@ -124,7 +124,6 @@ class FormsController extends Controller
             }
             else
             {
-
                 return redirect()->away($url);
             }
     }

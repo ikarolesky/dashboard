@@ -1,24 +1,27 @@
-    function copyToClipboard() {
+    function copyToClipboard(dataid) {
                     var range = document.createRange();
-                    range.selectNode(document.getElementById("copycode"));
+                    range.selectNode(document.getElementById(dataid));
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();
+
+                }
+        function copyToClipboard1(datahead) {
+                    var range = document.createRange();
+                    range.selectNode(document.getElementById(datahead));
                     window.getSelection().removeAllRanges();
                     window.getSelection().addRange(range);
                     document.execCommand("copy");
                     window.getSelection().removeAllRanges();
                 }
-        function copyToClipboard1() {
+        function copyToClipboard2(databody) {
                     var range = document.createRange();
-                    range.selectNode(document.getElementById("copyhead"));
+                    range.selectNode(document.getElementById("databody"));
                     window.getSelection().removeAllRanges();
                     window.getSelection().addRange(range);
                     document.execCommand("copy");
                     window.getSelection().removeAllRanges();
                 }
-        function copyToClipboard2() {
-                    var range = document.createRange();
-                    range.selectNode(document.getElementById("copybody"));
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                    document.execCommand("copy");
-                    window.getSelection().removeAllRanges();
-                }
+
+
