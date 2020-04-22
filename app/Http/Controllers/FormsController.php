@@ -8,6 +8,8 @@ use App\FormSub;
 use Illuminate\Http\Request;
 use Auth;
 use Crypt;
+use Redirect;
+use Str;
 
 class FormsController extends Controller
 {   
@@ -107,7 +109,7 @@ class FormsController extends Controller
     {
             $form_id = Crypt::decrypt($request->form_id);
             $user_id = Crypt::decrypt($request->user_id);
-            $url = $request->url;
+            $url = ($request->url);
             FormSub::create([
                 'forms_id' => $form_id,
                 'nome' => $request['nome'],
@@ -115,8 +117,16 @@ class FormsController extends Controller
                 'telefone' => $request['telefone'],
                 'selecione' => $request['selecione'],
             ]);
+            if(Str::contains($url , 'www.'))
+            {
+                $url2 = Str::replaceFirst('www.', 'https://', $url);
+                return redirect()->away($url2);
+            }
+            else
+            {
 
                 return redirect()->away($url);
+            }
     }
 
     public function leads()

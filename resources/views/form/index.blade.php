@@ -30,7 +30,7 @@ Formulários
 <div class="card">
 <div table="responsive">
 <div class="table-responsive">
-<table class="table zero-configuration">
+<table class="table">
     <thead>
         <tr>
             <th>Nome do Formulário</th>
